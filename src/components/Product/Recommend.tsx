@@ -93,7 +93,7 @@ const Recommend = () => {
       <Carousel
         slideSize="20%"
         slideGap="md"
-        emblaOptions={{ align: "center" }}
+        emblaOptions={{ align: "center", dragFree: true }}
       >
         {items.map((item: any) => (
           <Carousel.Slide key={item.id}>

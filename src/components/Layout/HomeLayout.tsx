@@ -51,16 +51,20 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
 
       <MobileNavbar />
 
-      <AppShell.Main p="0">
+      <AppShell.Main p="0" mih="100dvh" w="100%" style={{ overflow: "hidden" }}>
         {children}
         <Affix position={{ bottom: 20, right: 20 }}>
           <Transition transition="slide-up" mounted={scroll.y > 0}>
             {(transitionStyles: any) => (
               <ActionIcon
                 style={transitionStyles}
+                variant="light"
+                color="white"
+                radius="xl"
+                size="lg"
                 onClick={() => scrollTo({ y: 0 })}
               >
-                <IconArrowUp size={16} />
+                <IconArrowUp size={24} stroke={2.5} />
               </ActionIcon>
             )}
           </Transition>
