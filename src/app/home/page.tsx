@@ -1,5 +1,5 @@
 "use client";
-import { FooterSocial } from '@/components/Footer/Footer';
+import { FooterSocial } from "@/components/Footer/Footer";
 import Recommend from "@/components/Product/Recommend";
 import Review from "@/components/Product/Review";
 import {
@@ -17,7 +17,7 @@ import {
 export default function Home() {
   return (
     <Flex direction={"column"}>
-      <Box mih="100dvh" w="100%" bg="#FBEAD0" pos="relative">
+      <Box mih="100dvh" w="100%" bg="#FBEAD0" pos="relative" style={{ overflow: "hidden"}}>
         <Image
           top="-5%"
           right="30%"
@@ -127,10 +127,11 @@ export default function Home() {
           </Card>
         </Flex>
       </Box>
-      <Box bg="#FFFAEF">
+      <Box w="100%" bg="#FFFAEF">
         <Recommend />
-        <Review />
       </Box>
+      <Review />
+
       <Box
         mih="100dvh"
         w="100%"
