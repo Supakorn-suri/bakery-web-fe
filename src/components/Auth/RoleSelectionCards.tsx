@@ -12,8 +12,14 @@ import {
   Divider,
 } from "@mantine/core";
 import { IconCircleCheck } from "@tabler/icons-react";
+import RegisterModal from "./RegisterModal";
+import { useDisclosure } from "@mantine/hooks";
+import LoginModal from "./LoginModal";
 
 const RoleSelectionCards = () => {
+  const [openedLogin, loginHandlers] = useDisclosure(false);
+  const [openedRegister, registerHandlers] = useDisclosure(false);
+
   return (
     <Flex direction="column" gap={48} align="center" justify="center" p={60}>
       <Stack gap={0}>
@@ -72,6 +78,7 @@ const RoleSelectionCards = () => {
                 background:
                   "linear-gradient(135deg, #8A4621 0%, #BA653A 75%, #DC682E 100%)",
               }}
+              onClick={loginHandlers.open}
             >
               Apply Now
             </Button>
@@ -117,12 +124,15 @@ const RoleSelectionCards = () => {
                 background:
                   "linear-gradient(135deg, #8A4621 0%, #BA653A 75%, #DC682E 100%)",
               }}
+              onClick={registerHandlers.open}
             >
               Apply Now
             </Button>
           </Flex>
         </Card>
       </SimpleGrid>
+      <LoginModal opened={openedLogin} close={loginHandlers.close} />
+      <RegisterModal opened={openedRegister} close={registerHandlers.close} />
     </Flex>
   );
 };
