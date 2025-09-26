@@ -1,23 +1,20 @@
 "use client";
+import RoleSelectionCards from "@/components/Auth/RoleSelectionCards";
 import { FooterSocial } from "@/components/Footer/Footer";
 import Recommend from "@/components/Product/Recommend";
 import Review from "@/components/Product/Review";
-import {
-  Card,
-  Flex,
-  Text,
-  Group,
-  Image,
-  Box,
-  Button,
-  List,
-  Stack,
-} from "@mantine/core";
+import { Card, Flex, Text, Image, Box } from "@mantine/core";
 
 export default function Home() {
   return (
     <Flex direction={"column"}>
-      <Box mih="100dvh" w="100%" bg="#FBEAD0" pos="relative" style={{ overflow: "hidden"}}>
+      <Box
+        mih="100dvh"
+        w="100%"
+        bg="#FBEAD0"
+        pos="relative"
+        style={{ overflow: "hidden" }}
+      >
         <Image
           top="-5%"
           right="30%"
@@ -143,40 +140,7 @@ export default function Home() {
           justifyContent: "center", // center horizontally
         }}
       >
-        <Flex direction="row" gap={24} mx="xl">
-          <Card h={500} w={350} bg="#FCFCFC" withBorder radius="lg">
-            <Flex direction="column" justify="space-between" h="100%">
-              <Stack>
-                <Text>Member Login</Text>
-                <List>
-                  <List.Item>Browse bakery menus</List.Item>
-                  <List.Item>Browse bakery menus</List.Item>
-                  <List.Item>Track order status in real time</List.Item>
-                  <List.Item>Save favorite bakery items</List.Item>
-                </List>
-              </Stack>
-              <Button color="dark" fullWidth mt="md" radius="md">
-                Apply Now
-              </Button>
-            </Flex>
-          </Card>
-          <Card h={500} w={300} bg="#FCFCFC" withBorder radius="lg">
-            <Flex direction="column" justify="space-between" h="100%">
-              <Stack>
-                <Text>Baker Login</Text>
-                <List>
-                  <List.Item>Create and manage bakery menus</List.Item>
-                  <List.Item>Update or delete items anytime</List.Item>
-                  <List.Item>Track and manage customer orders</List.Item>
-                  <List.Item>View sales reports and charts</List.Item>
-                </List>
-              </Stack>
-              <Button color="dark" fullWidth mt="md" radius="md">
-                Apply Now
-              </Button>
-            </Flex>
-          </Card>
-        </Flex>
+        <RoleSelectionCards />
       </Box>
       <Box w="100%" bg="#77523F">
         <FooterSocial />
