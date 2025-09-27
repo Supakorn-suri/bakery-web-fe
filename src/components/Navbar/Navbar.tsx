@@ -6,9 +6,9 @@ const Navbar = () => {
   return (
     <Group ml="xl" gap={0} visibleFrom="sm">
       <UnstyledButton className={classes.control}>Home</UnstyledButton>
-      <UnstyledButton className={classes.control}>Blog</UnstyledButton>
-      <UnstyledButton className={classes.control}>Contacts</UnstyledButton>
-      <UnstyledButton className={classes.control}>Support</UnstyledButton>
+      <UnstyledButton className={classes.control}>Features</UnstyledButton>
+      <UnstyledButton className={classes.control}>Our Bakery</UnstyledButton>
+      <UnstyledButton className={classes.control}>For Members</UnstyledButton>
     </Group>
   );
 };

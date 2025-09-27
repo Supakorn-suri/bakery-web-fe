@@ -2,7 +2,7 @@
 import React from "react";
 import MobileNavbar from "@/components/Navbar/MobileNavbar";
 import Navbar from "@/components/Navbar/Navbar";
-import { IconArrowUp } from "@tabler/icons-react";
+import { IconArrowUp, IconArrowUpRight } from "@tabler/icons-react";
 
 import { useDisclosure, useHeadroom, useWindowScroll } from "@mantine/hooks";
 
@@ -20,10 +20,13 @@ import {
   Text,
   Transition,
 } from "@mantine/core";
+import { useRouter } from "next/navigation";
+
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   const [opened, { toggle }] = useDisclosure();
   const pinned = useHeadroom({ fixedAt: 120 });
   const [scroll, scrollTo] = useWindowScroll();
+  const router = useRouter();
   return (
     <AppShell
       header={{ height: 60 }}
@@ -43,8 +46,16 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Group justify="space-between" style={{ flex: 1 }}>
-            Header
+            <Text fw="bold">BakeStory</Text>
             <Navbar />
+            <Button
+              radius="xl"
+              variant="default"
+              rightSection={<IconArrowUpRight size={14} />}
+              onClick={() => router.replace("/register")}
+            >
+              Sweet Picks
+            </Button>
           </Group>
         </Group>
       </AppShell.Header>
