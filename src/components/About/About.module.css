@@ -1,0 +1,126 @@
+.bg_grid {
+  width: 100%;
+  min-height: 100dvh;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, #fffaf1 1px, transparent 1px),
+    linear-gradient(to bottom, #fffaf1 1px, transparent 1px);
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border-bottom: 1.5px solid #bababa;
+}
+
+.tab_bill {
+  position: absolute;
+  top: 54px;
+  width: 65%;
+  height: 48px;
+  z-index: 1;
+  background-color: #d6d6d6;
+  border-radius: 4px;
+  border-left: 4px solid #333;
+  border-right: 4px solid #333;
+  border-top: 8px solid #cdcdcd;
+  border-bottom: 8px solid #bcbcbc;
+}
+
+.bill_card1 {
+  height: 350px;
+  width: 250px;
+  background-color: #fcfcfc;
+  transform: rotate(2deg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+}
+
+.bill_card2 {
+  position: relative;
+  overflow: visible;
+  height: 350px;
+  width: 250px;
+  background-color: #fcfcfc;
+  transform: rotate(-4deg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+}
+.bill_card2::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  right: 36px;
+  width: 36px;
+  height: 36px;
+  background-color: #ea5757;
+  border-top: 3px solid #ff9090;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.bill_card3 {
+  position: relative;
+  height: 350px;
+  width: 250px;
+  background-color: #fcfcfc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  overflow: visible;
+}
+
+.bill_card3::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  width: 36px;
+  height: 36px;
+  background-color: #ea5757;
+  border-top: 3px solid #ff9090;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.bill_card4 {
+  position: relative;
+  overflow: visible;
+  height: 350px;
+  width: 250px;
+  background-color: #fcfcfc;
+  transform: rotate(5deg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+}
+
+.bill_card4::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 64px;
+  width: 36px;
+  height: 36px;
+  background-color: #ea5757;
+  border-top: 3px solid #ff9090;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.bill_card2::before {
+  display: none;
+}
+
+@media (max-width: 575px) {
+  .bill_card2::before {
+    display: block;
+  }
+}
