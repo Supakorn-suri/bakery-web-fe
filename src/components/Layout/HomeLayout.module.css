@@ -1,0 +1,16 @@
+.button_gradient {
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(45deg, #d98a3f, #6e442f, #ba653a, #fad1a4) border-box;
+  color: #313149;
+  border: 1px solid transparent;
+  border-radius: 40px;
+}
+
+.button_gradient:hover {
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(60deg, #6e442f, #fad1a4, #f0a853, #6e442f, #fad1a4)
+      border-box;
+  box-shadow: 0px 0px 4px 0px #fad1a4;
+  color: #ba653a;
+  transition: all 0.3s ease-in-out;
+}

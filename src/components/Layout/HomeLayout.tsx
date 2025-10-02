@@ -1,11 +1,9 @@
 "use client";
+
 import React from "react";
-import MobileNavbar from "@/components/Navbar/MobileNavbar";
-import Navbar from "@/components/Navbar/Navbar";
-import { IconArrowUp, IconArrowUpRight } from "@tabler/icons-react";
-
+import { useRouter } from "next/navigation";
 import { useDisclosure, useHeadroom, useWindowScroll } from "@mantine/hooks";
-
+import { IconArrowUp, IconArrowUpRight } from "@tabler/icons-react";
 import {
   AppShell,
   Burger,
@@ -13,14 +11,14 @@ import {
   ActionIcon,
   Affix,
   Button,
-  Card,
-  Flex,
-  Grid,
-  Paper,
   Text,
   Transition,
 } from "@mantine/core";
-import { useRouter } from "next/navigation";
+
+import MobileNavbar from "@/components/Navbar/MobileNavbar";
+import Navbar from "@/components/Navbar/Navbar";
+
+import classes from "./HomeLayout.module.css";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   const [opened, { toggle }] = useDisclosure();
@@ -49,8 +47,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
             <Text fw="bold">BakeStory</Text>
             <Navbar />
             <Button
-              radius="xl"
-              variant="default"
+              className={classes.button_gradient}
               rightSection={<IconArrowUpRight size={14} />}
               onClick={() => router.replace("/register")}
             >
