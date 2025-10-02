@@ -3,10 +3,10 @@ import {
   Button,
   PasswordInput,
   TextInput,
-  Group,
   Flex,
   Text,
   Anchor,
+  Checkbox,
 } from "@mantine/core";
 import { IconAt } from "@tabler/icons-react";
 
@@ -20,7 +20,7 @@ const LoginModal = ({
   const icon = <IconAt size={16} />;
   return (
     <Modal opened={opened} onClose={close} title="Login" centered>
-      <Flex direction="column">
+      <Flex direction="column" gap={16}>
         <TextInput
           leftSectionPointerEvents="none"
           leftSection={icon}
@@ -28,15 +28,14 @@ const LoginModal = ({
           placeholder="Your email"
         />
         <PasswordInput label="Password" />
-        <Group justify="space-between">
-          <Text>
-            Don't have an account?
-            <Anchor pl={4} href="/register" target="_blank">
-              Register
-            </Anchor>
-          </Text>
-          <Button>Login</Button>
-        </Group>
+        <Checkbox defaultChecked label="Remember me" />
+        <Button fullWidth>Login</Button>
+        <Text size="sm" ta="center">
+          Don't have an account?
+          <Anchor pl={8} href="/register" target="_blank" underline="always">
+            Sign up
+          </Anchor>
+        </Text>
       </Flex>
     </Modal>
   );

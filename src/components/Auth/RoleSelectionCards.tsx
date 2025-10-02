@@ -12,9 +12,10 @@ import {
   Divider,
 } from "@mantine/core";
 import { IconCircleCheck } from "@tabler/icons-react";
-import RegisterModal from "./RegisterModal";
 import { useDisclosure } from "@mantine/hooks";
+
 import LoginModal from "./LoginModal";
+import RegisterModal from "./RegisterModal";
 
 const RoleSelectionCards = () => {
   const [openedLogin, loginHandlers] = useDisclosure(false);
@@ -64,8 +65,8 @@ const RoleSelectionCards = () => {
                 center
                 icon={<IconCircleCheck size={16} />}
               >
-                <List.Item>Browse bakery menus</List.Item>
-                <List.Item>Browse bakery menus</List.Item>
+                <List.Item>Browse bakery</List.Item>
+                <List.Item>Place an order</List.Item>
                 <List.Item>Track order status in real time</List.Item>
                 <List.Item>Save favorite bakery items</List.Item>
               </List>
@@ -98,7 +99,7 @@ const RoleSelectionCards = () => {
             <Stack>
               <Image w="260" h="auto" fit="contain" src="/baker.jpg" />
               <Title order={3} ta="center">
-                Baker Login
+                Baker
               </Title>
               <Divider mx="md" />
 
