@@ -9,7 +9,9 @@ import { ModalsProvider } from "@mantine/modals";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
-import '@mantine/dropzone/styles.css';
+import "@mantine/dropzone/styles.css";
+
+import theme from "./theme";
 
 type Props = {
   children?: React.ReactNode;
@@ -17,7 +19,7 @@ type Props = {
 const MantineProvider = ({ children }: Props) => (
   <>
     <ColorSchemeScript />
-    <MantineThemeProvider>
+    <MantineThemeProvider theme={theme}>
       <Notifications position="bottom-center" />
       <ModalsProvider>{children}</ModalsProvider>
     </MantineThemeProvider>
