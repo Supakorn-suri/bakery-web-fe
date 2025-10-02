@@ -1,7 +1,5 @@
-export default function Main() {
-  return (
-    <div>
-      <p>content</p>
-    </div>
-  );
+import { redirect } from "next/navigation";
+
+export default function Page() {
+  redirect("/home");
 }
