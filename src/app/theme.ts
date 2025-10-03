@@ -1,6 +1,14 @@
-import { createTheme, Modal, Checkbox, rem } from "@mantine/core";
+import { Roboto } from "next/font/google";
+import { createTheme, Modal, Checkbox } from "@mantine/core";
+
+const googleFont = Roboto({
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal"],
+});
 
 const theme = createTheme({
+  fontFamily: googleFont.style.fontFamily,
   breakpoints: {
     xs: "36em",
     sm: "48em",
