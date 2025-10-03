@@ -1,4 +1,4 @@
-import HomeLayout from '@/components/Layout/HomeLayout';
+import BakeryLayout from '@/components/Layout/BakeryLayout';
 
 export default function AuthLayout({
   children,
@@ -6,6 +6,6 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   
-  return <HomeLayout>{children}</HomeLayout>;
+  return <BakeryLayout>{children}</BakeryLayout>;
 }
 
