@@ -79,55 +79,44 @@ const items: any = [
   },
 ];
 
-const Recommend = () => {
+interface ProductCardProps {
+  id: string;
+  name: string;
+  price: number;
+  cookTime: string;
+  rating: number;
+  image: string;
+}
+
+const ProductCard = (item: ProductCardProps) => {
   return (
-    <Flex
-      direction="column"
-      gap={24}
-      py={120}
-      px={60}
-      justify="center"
-      align="center"
-    >
-      <Title order={3}>Most Loved by Our Members</Title>
-      <Carousel
-        slideSize="20%"
-        slideGap="md"
-        emblaOptions={{ align: "start", dragFree: true }}
-      >
-        {items.map((item: any) => (
-          <Carousel.Slide key={item.id}>
-            <Card padding={12} radius={16} withBorder>
-              <Card.Section>
-                <Image
-                  src={item.image}
-                  h={180}
-                  miw={180}
-                  maw="auto"
-                  fit="cover"
-                  alt={item.name}
-                />
-              </Card.Section>
-              <Group justify="space-between" my={8}>
-                <Text fw={500}>{item.name}</Text>
-                <Text>฿{item.price}</Text>
-              </Group>
-              <Group>
-                <IconClockHour3 />
-                <Text>{item.cookTime}</Text>
-                <Divider size="sm" orientation="vertical" />
-                <Rating defaultValue={1} count={1} />
-                <Text>{item.rating}</Text>
-              </Group>
-              <Button color="#6E442F" fullWidth mt="md" radius="md">
-                Order Now
-              </Button>
-            </Card>
-          </Carousel.Slide>
-        ))}
-      </Carousel>
-    </Flex>
+    <Card id={item.id} padding={12} radius={16} withBorder>
+      <Card.Section>
+        <Image
+          src={item.image}
+          h={180}
+          miw={180}
+          maw="auto"
+          fit="cover"
+          alt={item.name}
+        />
+      </Card.Section>
+      <Group justify="space-between" my={8}>
+        <Text fw={500}>{item.name}</Text>
+        <Text>฿{item.price}</Text>
+      </Group>
+      <Group>
+        <IconClockHour3 />
+        <Text>{item.cookTime}</Text>
+        <Divider size="sm" orientation="vertical" />
+        <Rating defaultValue={1} count={1} />
+        <Text>{item.rating}</Text>
+      </Group>
+      <Button color="#6E442F" fullWidth mt="md" radius="md">
+        Order Now
+      </Button>
+    </Card>
   );
 };
 
-export default Recommend;
+export default ProductCard;
