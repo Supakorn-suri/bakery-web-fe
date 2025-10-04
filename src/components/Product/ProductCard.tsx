@@ -1,87 +1,29 @@
 "use client";
-import { Carousel } from "@mantine/carousel";
+
+import { useRouter } from "next/navigation";
 import {
   Button,
   Card,
-  Flex,
   Group,
   Text,
   Image,
-  Title,
   Divider,
-  Rating,
+  Badge,
+  Flex,
+  Box,
+  ActionIcon,
 } from "@mantine/core";
-import { IconClockHour3 } from "@tabler/icons-react";
-
-const items: any = [
-  {
-    id: "item-1",
-    name: "Bread",
-    price: 450,
-    cookTime: "20 min",
-    rating: 5,
-    image:
-      "https://plus.unsplash.com/premium_photo-1675788938970-e2716f23b1f9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmFrZXJ5fGVufDB8fDB8fHww",
-  },
-  {
-    id: "item-2",
-    name: "Cookie",
-    price: 250,
-    cookTime: "20 min",
-    rating: 4.89,
-    image:
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJha2VyeXxlbnwwfHwwfHx8MA%3D%3D",
-  },
-  {
-    id: "item-3",
-    name: "Tart",
-    price: 150,
-    cookTime: "20 min",
-    rating: 4.86,
-    image:
-      "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGJha2VyeXxlbnwwfHwwfHx8MA%3D%3D",
-  },
-  {
-    id: "item-4",
-    name: "Bread",
-    price: 250,
-    cookTime: "30 min",
-    rating: 4.8,
-    image:
-      "https://images.unsplash.com/photo-1666114265205-394e9d5848c6?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUwfHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
-  },
-  {
-    id: "item-5",
-    name: "Cake",
-    price: 530,
-    cookTime: "45 min",
-    rating: 4.7,
-    image:
-      "https://images.unsplash.com/photo-1618426703433-cd39e563cf71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY1fHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
-  },
-  {
-    id: "item-6",
-    name: "Cake",
-    price: 350,
-    cookTime: "45 min",
-    rating: 4.5,
-    image:
-      "https://images.unsplash.com/photo-1469533778471-92a68acc3633?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjUzfHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
-  },
-  {
-    id: "item-7",
-    name: "Croissant",
-    price: 340,
-    cookTime: "30 min",
-    rating: 3.9,
-    image:
-      "https://images.unsplash.com/photo-1600516171254-e604c372872a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzI1fHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
-  },
-];
+import {
+  IconClockHour3,
+  IconStarFilled,
+  IconChefHat,
+  IconHeart,
+} from "@tabler/icons-react";
 
 interface ProductCardProps {
   id: string;
   name: string;
+  baker: string;
   price: number;
   cookTime: string;
   rating: number;
@@ -89,32 +31,60 @@ interface ProductCardProps {
 }
 
 const ProductCard = (item: ProductCardProps) => {
+  const router = useRouter();
+
   return (
-    <Card id={item.id} padding={12} radius={16} withBorder>
-      <Card.Section>
-        <Image
-          src={item.image}
-          h={180}
-          miw={180}
-          maw="auto"
-          fit="cover"
-          alt={item.name}
-        />
-      </Card.Section>
-      <Group justify="space-between" my={8}>
-        <Text fw={500}>{item.name}</Text>
-        <Text>฿{item.price}</Text>
-      </Group>
-      <Group>
-        <IconClockHour3 />
-        <Text>{item.cookTime}</Text>
-        <Divider size="sm" orientation="vertical" />
-        <Rating defaultValue={1} count={1} />
-        <Text>{item.rating}</Text>
-      </Group>
-      <Button color="#6E442F" fullWidth mt="md" radius="md">
-        Order Now
-      </Button>
+    <Card id={item.id} w={200} h={300} p={0} radius={16} withBorder>
+      <Box pos="relative" w="100%">
+        <Image src={item.image} h={150} maw={200} fit="cover" alt={item.name} />
+        <ActionIcon
+          variant="light"
+          color="red"
+          radius="xl"
+          size="lg"
+          style={{ position: "absolute", top: 8, right: 8 }}
+        >
+          <IconHeart size={18} />
+        </ActionIcon>
+      </Box>
+      <Flex direction="column" justify="space-between" p={12} h="100%" w="100%">
+        <Flex direction="column">
+          <Group justify="space-between">
+            <Text fw={500}>{item.name}</Text>
+            <Text fw={600} c="primary">
+              ฿{item.price}
+            </Text>
+          </Group>
+          <Badge
+            size="sm"
+            variant="light"
+            leftSection={<IconChefHat size={12} />}
+            my={4}
+          >
+            {item.baker}
+          </Badge>
+          <Group gap={4}>
+            <IconClockHour3 color="#707070" size={16} />
+            <Text size="sm" c="#707070">
+              {item.cookTime}
+            </Text>
+            <Divider size="xs" orientation="vertical" my={2} mx={4} />
+            <IconStarFilled color="#FFC862" size={16} />
+            <Text size="sm" c="#707070">
+              {item.rating}
+            </Text>
+          </Group>
+        </Flex>
+
+        <Button
+          fullWidth
+          mt="md"
+          radius="md"
+          onClick={() => router.replace("/bakery")}
+        >
+          Order Now
+        </Button>
+      </Flex>
     </Card>
   );
 };
