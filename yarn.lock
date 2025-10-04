@@ -463,12 +463,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:^8.3.1":
-  version: 8.3.1
-  resolution: "@mantine/hooks@npm:8.3.1"
+"@mantine/hooks@npm:8.3.2":
+  version: 8.3.2
+  resolution: "@mantine/hooks@npm:8.3.2"
   peerDependencies:
     react: ^18.x || ^19.x
-  checksum: 10c0/d64ea9c848a687668ce34007e3ab226b5c45c52ea1f4bdd721ca17b07d7f7a642b86e23ee65777179d6cd1ae9c3ce56fe43602828f332bfc2cbd59658b1c9047
+  checksum: 10c0/48a8939d9f5a4620dd5e68afd9a87e8a18e7af6ef6db377586ee5a8d247f27fa1c1e0c81c35ae048096964e2b37752b081fb3af527833fab6689882c9800f65a
   languageName: node
   linkType: hard
 
@@ -496,6 +496,20 @@ __metadata:
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
   checksum: 10c0/8dd13f56c265cc2a60766d016f0cf0c85c97604174376f3ba4d659329187380e2a55998a0d440fe5a73635c6e96368aefad479c3abc21f186219ef68ac1014b3
+  languageName: node
+  linkType: hard
+
+"@mantine/spotlight@npm:8.3.2":
+  version: 8.3.2
+  resolution: "@mantine/spotlight@npm:8.3.2"
+  dependencies:
+    "@mantine/store": "npm:8.3.2"
+  peerDependencies:
+    "@mantine/core": 8.3.2
+    "@mantine/hooks": 8.3.2
+    react: ^18.x || ^19.x
+    react-dom: ^18.x || ^19.x
+  checksum: 10c0/8ad62be616481813ce2afe1d5f83182c07a69b62c93ace5c8d1cee491cc974df329a2ffbb8b11162afacd2b7424cd5b8eddc2cbd909a48a97646cb53b77d4cc0
   languageName: node
   linkType: hard
 
@@ -1207,9 +1221,10 @@ __metadata:
     "@mantine/carousel": "npm:^8.3.2"
     "@mantine/core": "npm:^8.3.2"
     "@mantine/dropzone": "npm:^8.3.2"
-    "@mantine/hooks": "npm:^8.3.1"
+    "@mantine/hooks": "npm:8.3.2"
     "@mantine/modals": "npm:^8.3.2"
     "@mantine/notifications": "npm:^8.3.2"
+    "@mantine/spotlight": "npm:8.3.2"
     "@tabler/icons-react": "npm:^3.35.0"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
