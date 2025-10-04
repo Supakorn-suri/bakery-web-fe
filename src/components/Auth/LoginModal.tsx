@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import {
   Modal,
   Button,
@@ -17,6 +20,8 @@ const LoginModal = ({
   opened: boolean;
   close: () => void;
 }) => {
+  const router = useRouter();
+
   const icon = <IconAt size={16} />;
   return (
     <Modal opened={opened} onClose={close} title="Login" centered>
@@ -29,7 +34,9 @@ const LoginModal = ({
         />
         <PasswordInput label="Password" />
         <Checkbox defaultChecked label="Remember me" />
-        <Button fullWidth>Login</Button>
+        <Button fullWidth onClick={() => router.replace("/bakery")}>
+          Login
+        </Button>
         <Text size="sm" ta="center">
           Don't have an account?
           <Anchor pl={8} href="/register" target="_blank" underline="always">

@@ -11,7 +11,7 @@ import {
   ActionIcon,
   Affix,
   Button,
-  Text,
+  Anchor,
   Transition,
 } from "@mantine/core";
 
@@ -44,7 +44,9 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Group justify="space-between" style={{ flex: 1 }}>
-            <Text fw="bold">BakeStory</Text>
+            <Anchor c="dark" fw="bold" href="/home" underline="never">
+              BakeStory
+            </Anchor>
             <Navbar />
             <Button
               className={classes.button_gradient}

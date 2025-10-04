@@ -119,11 +119,7 @@ const RegisterPage = () => {
                     Login
                   </Anchor>
                 </Text>
-                <Button
-                  color="#BA653A"
-                  radius="md"
-                  onClick={() => console.log("Form submitted")}
-                >
+                <Button radius="md" onClick={() => router.replace("/bakery")}>
                   Apply
                 </Button>
               </Flex>

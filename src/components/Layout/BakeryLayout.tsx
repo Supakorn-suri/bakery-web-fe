@@ -16,10 +16,10 @@ import {
   Group,
   ActionIcon,
   Affix,
-  Text,
   Transition,
   Menu,
   Button,
+  Anchor,
 } from "@mantine/core";
 
 const BakeryLayout = ({ children }: { children: React.ReactNode }) => {
@@ -44,7 +44,9 @@ const BakeryLayout = ({ children }: { children: React.ReactNode }) => {
       >
         <Group h="100%" px="md">
           <Group justify="space-between" style={{ flex: 1 }}>
-            <Text fw="bold">BakeStory</Text>
+            <Anchor c="dark" fw="bold" href="/home" underline="never">
+              BakeStory
+            </Anchor>
             <Group>
               <Menu trigger="click-hover" openDelay={100} closeDelay={400}>
                 <Menu.Target>

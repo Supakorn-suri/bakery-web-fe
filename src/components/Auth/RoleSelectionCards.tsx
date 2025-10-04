@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 import {
   Card,
   Flex,
@@ -15,11 +16,10 @@ import { IconCircleCheck } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 
 import LoginModal from "./LoginModal";
-import RegisterModal from "./RegisterModal";
 
 const RoleSelectionCards = () => {
+  const router = useRouter();
   const [openedLogin, loginHandlers] = useDisclosure(false);
-  const [openedRegister, registerHandlers] = useDisclosure(false);
 
   return (
     <Flex direction="column" gap={48} align="center" justify="center" p={60}>
@@ -125,7 +125,7 @@ const RoleSelectionCards = () => {
                 background:
                   "linear-gradient(135deg, #8A4621 0%, #BA653A 75%, #DC682E 100%)",
               }}
-              onClick={registerHandlers.open}
+              onClick={() => router.replace("/register")}
             >
               Apply Now
             </Button>
@@ -133,7 +133,6 @@ const RoleSelectionCards = () => {
         </Card>
       </SimpleGrid>
       <LoginModal opened={openedLogin} close={loginHandlers.close} />
-      <RegisterModal opened={openedRegister} close={registerHandlers.close} />
     </Flex>
   );
 };
