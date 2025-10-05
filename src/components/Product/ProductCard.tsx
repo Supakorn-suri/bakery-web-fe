@@ -20,7 +20,7 @@ import {
   IconHeart,
 } from "@tabler/icons-react";
 
-interface ProductCardProps {
+export interface ProductProps {
   id: string;
   name: string;
   baker: string;
@@ -30,7 +30,7 @@ interface ProductCardProps {
   image: string;
 }
 
-const ProductCard = (item: ProductCardProps) => {
+const ProductCard = (item: ProductProps) => {
   const router = useRouter();
 
   return (

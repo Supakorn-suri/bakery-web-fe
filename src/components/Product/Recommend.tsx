@@ -3,9 +3,9 @@
 import { Carousel } from "@mantine/carousel";
 import { Flex, Title } from "@mantine/core";
 
-import ProductCard from "./ProductCard";
+import ProductCard, { ProductProps } from "./ProductCard";
 
-export const mockItems: any = [
+export const mockItems: ProductProps[] = [
   {
     id: "item-1",
     name: "Bread",

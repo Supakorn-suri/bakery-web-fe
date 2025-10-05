@@ -19,18 +19,9 @@ import {
   IconPlus,
   IconStarFilled,
 } from "@tabler/icons-react";
+import { ProductProps } from "./ProductCard";
 
-interface HorizontalProductCardProps {
-  id: string;
-  name: string;
-  baker: string;
-  price: number;
-  cookTime: string;
-  rating: number;
-  image: string;
-}
-
-const HorizontalProductCard = (item: HorizontalProductCardProps) => {
+const HorizontalProductCard = (item: ProductProps) => {
   const router = useRouter();
 
   return (
