@@ -12,7 +12,12 @@ const TabLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Container size="md" mt={100}>
-      <Tabs value={pathname} onChange={(value: string) => router.push(value)}>
+      <Tabs
+        value={pathname}
+        onChange={(value: string | null) => {
+          if (value) router.push(value);
+        }}
+      >
         <Tabs.List>
           <Tabs.Tab value="/account">Profile</Tabs.Tab>
           <Tabs.Tab value="/account/orders">Orders</Tabs.Tab>
