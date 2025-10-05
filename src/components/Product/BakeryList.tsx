@@ -46,7 +46,7 @@ const BakeryList = () => {
       <Flex direction="column" p={24} gap={24}>
         <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }}>
           {mockItems.map((item: any) => (
-            <HorizontalProductCard {...item} />
+            <HorizontalProductCard key={item.id} {...item} />
           ))}
         </SimpleGrid>
         <Group justify="flex-end">
