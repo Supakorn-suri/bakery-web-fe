@@ -32,6 +32,9 @@ import {
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
+
+import LoginModal from "@/components/Auth/LoginModal";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -43,16 +46,11 @@ const RegisterPage = () => {
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
   const [value, setValue] = useState("Member");
+  const [openedLogin, loginHandlers] = useDisclosure(false);
 
   return (
     <Container fluid h="100dvh" bg="#FAF3E3">
       <Affix position={{ top: 20, left: 20 }}>
-        {/* <ActionIcon
-          variant="transparent"
-          onClick={() => router.replace("/home")}
-        >
-          <IconChevronLeft stroke={2} />
-        </ActionIcon> */}
         <Button
           size="xs"
           radius="md"
@@ -112,9 +110,8 @@ const RegisterPage = () => {
                   Have an account?
                   <Anchor
                     pl={8}
-                    href="/login"
-                    target="_blank"
                     underline="always"
+                    onClick={loginHandlers.open}
                   >
                     Login
                   </Anchor>
@@ -241,19 +238,14 @@ const RegisterPage = () => {
                   Have an account?
                   <Anchor
                     pl={8}
-                    href="/login"
-                    target="_blank"
                     underline="always"
+                    onClick={loginHandlers.open}
                   >
                     Login
                   </Anchor>
                 </Text>
                 {active === 2 ? (
-                  <Button
-                    color="#BA653A"
-                    radius="md"
-                    onClick={() => console.log("Form submitted")}
-                  >
+                  <Button radius="md" onClick={() => router.replace("/bakery")}>
                     Apply
                   </Button>
                 ) : (
@@ -277,6 +269,7 @@ const RegisterPage = () => {
           )}
         </Card>
       </Flex>
+      <LoginModal opened={openedLogin} close={loginHandlers.close} />
     </Container>
   );
 };

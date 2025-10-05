@@ -59,13 +59,13 @@ const BakeryLayout = ({ children }: { children: React.ReactNode }) => {
                   </Button>
                 </Menu.Target>
                 <Menu.Dropdown>
-                  <Menu.Item leftSection={<IconUser size={14} />}>
+                  <Menu.Item leftSection={<IconUser size={14} />} onClick={() => router.replace("/account")}>
                     Profile
                   </Menu.Item>
-                  <Menu.Item leftSection={<IconHistory size={14} />}>
+                  <Menu.Item leftSection={<IconHistory size={14} />} onClick={() => router.replace("/account/orders")}>
                     Order history
                   </Menu.Item>
-                  <Menu.Item leftSection={<IconHeart size={14} />}>
+                  <Menu.Item leftSection={<IconHeart size={14} />} onClick={() => router.replace("/account/favorites")}>
                     My Favorites
                   </Menu.Item>
                   <Menu.Divider />

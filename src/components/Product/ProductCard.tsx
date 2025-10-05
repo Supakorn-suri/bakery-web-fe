@@ -80,7 +80,7 @@ const ProductCard = (item: ProductCardProps) => {
           fullWidth
           mt="md"
           radius="md"
-          onClick={() => router.replace("/bakery")}
+          onClick={() => router.push(`/bakery/${item.id}`)}
         >
           Order Now
         </Button>
