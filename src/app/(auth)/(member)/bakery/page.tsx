@@ -4,7 +4,7 @@ import React from "react";
 import { Carousel } from "@mantine/carousel";
 import { Flex, Title } from "@mantine/core";
 
-import Recommend, { mockItems } from "@/components/Product/Recommend";
+import { mockItems } from "@/components/Product/Recommend";
 import BakeryList from "@/components/Product/BakeryList";
 import ProductCard from "@/components/Product/ProductCard";
 import HeroSection from "@/components/Product/HeroSection";
@@ -45,7 +45,21 @@ const BakeryPage = () => {
         </Carousel>
       </Flex>
 
-      <Recommend />
+      <Flex direction="column" gap={24} p={24}>
+        <Title order={3}>Most Loved by Our Members</Title>
+
+        <Carousel
+          slideSize="20%"
+          slideGap="md"
+          emblaOptions={{ align: "start", dragFree: true }}
+        >
+          {mockItems.map((item: any) => (
+            <Carousel.Slide key={item.id}>
+              <ProductCard {...item} />
+            </Carousel.Slide>
+          ))}
+        </Carousel>
+      </Flex>
       <BakeryList />
     </Flex>
   );
