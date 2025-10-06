@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Carousel } from "@mantine/carousel";
-import { Flex, Title } from "@mantine/core";
+import { Flex, Title, Container } from "@mantine/core";
 
 import { mockItems } from "@/components/Product/Recommend";
 import BakeryList from "@/components/Product/BakeryList";
@@ -12,56 +12,58 @@ import SearchSpotlight from "@/components/Product/SearchSpotlight";
 
 const BakeryPage = () => {
   return (
-    <Flex
-      direction="column"
-      mih="100dvh"
-      w="100%"
+    <Container
+      fluid
       pos="relative"
       style={{
         overflow: "hidden",
         background:
           "linear-gradient(25deg,#FFFFFF 75%, #FFF5DC 90%, #FFFFFF 99%)",
       }}
-      gap={16}
-      mt={60}
     >
-      <HeroSection />
+      <Flex
+        mt={96}
+        direction="column"
+        p={{ base: 24, sm: 48 }}
+        maw={1408}
+        mx={{ base: 0, lg: "auto" }}
+      >
+        <HeroSection />
 
-      <SearchSpotlight />
+        <SearchSpotlight />
 
-      <Flex direction="column" gap={24} p={24}>
-        <Title order={3}>Sweet moments, baked for you</Title>
+        <Flex direction="column" gap={24}>
+          <Title order={3}>Sweet moments, baked for you</Title>
+          <Carousel
+            slideSize="10%"
+            slideGap="lg"
+            emblaOptions={{ align: "start", dragFree: true }}
+          >
+            {mockItems.map((item: any) => (
+              <Carousel.Slide key={item.id}>
+                <ProductCard {...item} />
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </Flex>
 
-        <Carousel
-          slideSize="20%"
-          slideGap="md"
-          emblaOptions={{ align: "start", dragFree: true }}
-        >
-          {mockItems.map((item: any) => (
-            <Carousel.Slide key={item.id}>
-              <ProductCard {...item} />
-            </Carousel.Slide>
-          ))}
-        </Carousel>
+        <Flex direction="column" gap={24} my={56}>
+          <Title order={3}>Most Loved by Our Members</Title>
+          <Carousel
+            slideSize="10%"
+            slideGap="lg"
+            emblaOptions={{ align: "start", dragFree: true }}
+          >
+            {mockItems.map((item: any) => (
+              <Carousel.Slide key={item.id}>
+                <ProductCard {...item} />
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </Flex>
+        <BakeryList />
       </Flex>
-
-      <Flex direction="column" gap={24} p={24}>
-        <Title order={3}>Most Loved by Our Members</Title>
-
-        <Carousel
-          slideSize="20%"
-          slideGap="md"
-          emblaOptions={{ align: "start", dragFree: true }}
-        >
-          {mockItems.map((item: any) => (
-            <Carousel.Slide key={item.id}>
-              <ProductCard {...item} />
-            </Carousel.Slide>
-          ))}
-        </Carousel>
-      </Flex>
-      <BakeryList />
-    </Flex>
+    </Container>
   );
 };
 

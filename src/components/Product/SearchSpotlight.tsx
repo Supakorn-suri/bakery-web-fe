@@ -63,14 +63,14 @@ const SearchSpotlight = () => {
       <Box
         miw={160}
         w="100%"
-        maw={400}
+        maw={480}
         mx="auto"
         p={16}
         style={{
           backdropFilter: "blur(2px)",
           position: "relative",
           zIndex: 1,
-          bottom: 50,
+          bottom: 80,
           borderRadius: "80px",
           boxShadow: "0 2px 2px rgba(0, 0, 0, 0.05)",
         }}
