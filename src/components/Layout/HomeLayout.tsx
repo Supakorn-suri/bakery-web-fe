@@ -20,7 +20,7 @@ import Navbar from "@/components/Navbar/Navbar";
 
 import classes from "./HomeLayout.module.css";
 
-const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+const HomeLayout = ({ children }: { children?: React.ReactNode }) => {
   const [opened, { toggle }] = useDisclosure();
   const pinned = useHeadroom({ fixedAt: 120 });
   const [scroll, scrollTo] = useWindowScroll();
@@ -59,7 +59,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
         </Group>
       </AppShell.Header>
 
-      <MobileNavbar />
+      <MobileNavbar onClick={toggle} />
 
       <AppShell.Main p="0" mih="100dvh" w="100%" style={{ overflow: "hidden" }}>
         {children}

@@ -1,11 +1,10 @@
-import HomeLayout from '@/components/Layout/HomeLayout';
+import React from "react";
+import HomeLayout from "@/components/Layout/HomeLayout";
 
-export default function RootLayout({
+export default function HomePageLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  
+}) {
   return <HomeLayout>{children}</HomeLayout>;
 }
-
