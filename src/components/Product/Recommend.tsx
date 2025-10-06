@@ -86,8 +86,8 @@ export const mockItems: ProductProps[] = [
 const Recommend = () => {
   return (
     <Carousel
-      slideSize="20%"
-      slideGap="md"
+      slideSize="10%"
+      slideGap="lg"
       emblaOptions={{ align: "start", dragFree: true }}
     >
       {mockItems.map((item: any) => (
