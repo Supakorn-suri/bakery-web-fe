@@ -22,7 +22,7 @@ import {
   Anchor,
 } from "@mantine/core";
 
-const BakeryLayout = ({ children }: { children: React.ReactNode }) => {
+const BakeryLayout = ({ children }: { children?: React.ReactNode }) => {
   const pinned = useHeadroom({ fixedAt: 120 });
   const [scroll, scrollTo] = useWindowScroll();
   const router = useRouter();
@@ -59,13 +59,22 @@ const BakeryLayout = ({ children }: { children: React.ReactNode }) => {
                   </Button>
                 </Menu.Target>
                 <Menu.Dropdown>
-                  <Menu.Item leftSection={<IconUser size={14} />} onClick={() => router.replace("/account")}>
+                  <Menu.Item
+                    leftSection={<IconUser size={14} />}
+                    onClick={() => router.replace("/account")}
+                  >
                     Profile
                   </Menu.Item>
-                  <Menu.Item leftSection={<IconHistory size={14} />} onClick={() => router.replace("/account/orders")}>
+                  <Menu.Item
+                    leftSection={<IconHistory size={14} />}
+                    onClick={() => router.replace("/account/orders")}
+                  >
                     Order history
                   </Menu.Item>
-                  <Menu.Item leftSection={<IconHeart size={14} />} onClick={() => router.replace("/account/favorites")}>
+                  <Menu.Item
+                    leftSection={<IconHeart size={14} />}
+                    onClick={() => router.replace("/account/favorites")}
+                  >
                     My Favorites
                   </Menu.Item>
                   <Menu.Divider />
