@@ -1,0 +1,20 @@
+.handwriting_text {
+  font-family: var(--font-caveat);
+  color: var(--mantine-color-white);
+  line-height: 1.2;
+  font-weight: 700;
+  font-size: 75px;
+  text-align: center;
+  margin-top: 18px;
+}
+
+.main_text {
+  position: absolute;
+  top: 28%;
+  left: 34%;
+  text-align: start;
+  font-size: 100px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--mantine-color-dark-9);
+}
