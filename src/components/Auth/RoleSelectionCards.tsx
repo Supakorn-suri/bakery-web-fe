@@ -65,7 +65,7 @@ const RoleSelectionCards = () => {
                 spacing="xs"
                 size="sm"
                 center
-                icon={<IconCircleCheck size={16} />}
+                icon={<IconCircleCheck size={16} color="#A4A4A4" />}
               >
                 <List.Item>Browse bakery</List.Item>
                 <List.Item>Place an order</List.Item>
@@ -110,7 +110,7 @@ const RoleSelectionCards = () => {
                 spacing="xs"
                 size="sm"
                 center
-                icon={<IconCircleCheck size={16} />}
+                icon={<IconCircleCheck size={16} color="#A4A4A4" />}
               >
                 <List.Item>Create and manage bakery menus</List.Item>
                 <List.Item>Update or delete items anytime</List.Item>

@@ -7,13 +7,13 @@ import {
   SimpleGrid,
   Box,
   Divider,
-  Stack,
 } from "@mantine/core";
+
 import classes from "./About.module.css";
 
-const About = () => {
+const About = ({ id }: { id: string }) => {
   return (
-    <Box className={classes.bg_grid}>
+    <Box id={id} className={classes.bg_grid}>
       <Flex direction="row" align="center" justify="center">
         <Card h={80} w="70%" mt="xl" bg="#E1E1E1" px="sm" pt="6">
           <Flex direction="row" align="center" justify="space-around">
