@@ -1,5 +1,10 @@
 "use client";
-
+import { Caveat } from "next/font/google";
+const caveat = Caveat({
+  weight: ["400", "600", "700"], 
+  subsets: ["latin"],
+  variable: "--font-caveat", 
+});
 import { Flex, Text, Image, Box, Title } from "@mantine/core";
 import {
   IconShoppingBag,

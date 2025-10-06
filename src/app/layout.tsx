@@ -1,5 +1,12 @@
 import { mantineHtmlProps } from "@mantine/core";
 import MantineProvider from "./MantineProvider";
+import { Caveat } from "next/font/google";
+
+export const caveat = Caveat({
+  weight: ["700"],
+  subsets: ["latin"],
+  variable: "--font-caveat",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -12,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" {...mantineHtmlProps}>
+    <html lang="en" className={caveat.variable} {...mantineHtmlProps}>
       <body>
         <MantineProvider>{children}</MantineProvider>
       </body>
