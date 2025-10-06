@@ -3,7 +3,7 @@ import {
   IconBrandTwitter,
   IconBrandYoutube,
 } from "@tabler/icons-react";
-import { ActionIcon, Container, Group, Box, Avatar } from "@mantine/core";
+import { ActionIcon, Container, Group, Box, Text } from "@mantine/core";
 
 export function FooterSocial() {
   return (
@@ -16,7 +16,9 @@ export function FooterSocial() {
           gap: "2rem",
         }}
       >
-        <Avatar radius="xl" color="white" />
+        <Text fz="sm" c="white">
+          © {new Date().getFullYear()} BakeStory. All rights reserved.
+        </Text>
         <Group gap={12}>
           <ActionIcon size="lg" color="white" variant="subtle">
             <IconBrandTwitter size={18} stroke={1.5} />
