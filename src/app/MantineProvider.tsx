@@ -6,11 +6,12 @@ import {
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { ModalsProvider } from "@mantine/modals";
+import "@mantine/charts/styles.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
 import "@mantine/dropzone/styles.css";
-import '@mantine/spotlight/styles.css';
+import "@mantine/spotlight/styles.css";
 
 import theme from "./theme";
 
