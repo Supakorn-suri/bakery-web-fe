@@ -1,10 +1,10 @@
 import React from "react";
 import BakeryLayout from "@/components/Layout/BakeryLayout";
 
-export default function AuthLayout({
+export default function BakerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <BakeryLayout>{children}</BakeryLayout>;
+  return <BakeryLayout role="baker">{children}</BakeryLayout>;
 }
