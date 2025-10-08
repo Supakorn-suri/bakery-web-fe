@@ -54,6 +54,17 @@ const theme = createTheme({
         },
       },
     }),
+    NumberInput: {
+      defaultProps: {
+        radius: "8px",
+        inputWrapperOrder: ["label", "input", "description"],
+      },
+      styles: {
+        wrapper: {
+          width: "100%",
+        },
+      },
+    },
     TextInput: {
       defaultProps: {
         radius: "8px",
@@ -75,6 +86,14 @@ const theme = createTheme({
       defaultProps: {
         radius: "8px",
         inputWrapperOrder: ["label", "input", "description"],
+      },
+    },
+    Table: {
+      styles: {
+        th: {
+          backgroundColor: "#FBF4EA",
+          height: "48px",
+        },
       },
     },
   },
