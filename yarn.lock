@@ -485,7 +485,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/modals@npm:^8.3.2":
+"@mantine/modals@npm:8.3.2":
   version: 8.3.2
   resolution: "@mantine/modals@npm:8.3.2"
   peerDependencies:
@@ -1366,7 +1366,7 @@ __metadata:
     "@mantine/core": "npm:^8.3.2"
     "@mantine/dropzone": "npm:^8.3.2"
     "@mantine/hooks": "npm:8.3.2"
-    "@mantine/modals": "npm:^8.3.2"
+    "@mantine/modals": "npm:8.3.2"
     "@mantine/notifications": "npm:^8.3.2"
     "@mantine/spotlight": "npm:8.3.2"
     "@tabler/icons-react": "npm:^3.35.0"

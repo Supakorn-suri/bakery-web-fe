@@ -14,7 +14,7 @@
     "@mantine/core": "^8.3.2",
     "@mantine/dropzone": "^8.3.2",
     "@mantine/hooks": "8.3.2",
-    "@mantine/modals": "^8.3.2",
+    "@mantine/modals": "8.3.2",
     "@mantine/notifications": "^8.3.2",
     "@mantine/spotlight": "8.3.2",
     "@tabler/icons-react": "^3.35.0",
