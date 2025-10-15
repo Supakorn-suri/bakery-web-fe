@@ -50,7 +50,6 @@ const LoginModal = ({
           title: response.message,
           message: `Welcome back!`,
           color: "green",
-          position: "top-center",
         });
         close();
 
@@ -58,7 +57,7 @@ const LoginModal = ({
         if (response.user.role === "baker") {
           router.push("/dashboard");
         } else {
-          router.push("/products");
+          router.push("/bakery");
         }
       },
       onError: (error: any) => {
@@ -66,7 +65,6 @@ const LoginModal = ({
           title: "Login Failed",
           message: error.response?.data?.message || "Invalid credentials",
           color: "red",
-          position: "top-center",
         });
       },
     });
