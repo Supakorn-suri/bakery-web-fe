@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from 'react';
 import {
   MantineProvider as MantineThemeProvider,
   ColorSchemeScript,
@@ -13,12 +14,13 @@ import "@mantine/carousel/styles.css";
 import "@mantine/dropzone/styles.css";
 import "@mantine/spotlight/styles.css";
 
-import theme from "./theme";
+import theme from "../../app/theme";
 
-type Props = {
-  children?: React.ReactNode;
-};
-const MantineProvider = ({ children }: Props) => (
+interface MantineProviderProps {
+  children?: ReactNode;
+}
+
+export const MantineProvider = ({ children }: MantineProviderProps) => (
   <>
     <ColorSchemeScript />
     <MantineThemeProvider theme={theme}>
@@ -27,5 +29,3 @@ const MantineProvider = ({ children }: Props) => (
     </MantineThemeProvider>
   </>
 );
-
-export default MantineProvider;
