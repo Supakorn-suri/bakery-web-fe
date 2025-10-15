@@ -20,6 +20,7 @@ import { notifications } from "@mantine/notifications";
 import { LoginFormData, loginSchema } from "../schemas/authSchemas";
 import { LoginResponse } from "../types/auth";
 import { login } from "../apis/login";
+import { useAuthStore } from "../store/authStore";
 
 const LoginModal = ({
   opened,
@@ -32,7 +33,7 @@ const LoginModal = ({
   const { mutate: loginMutation, isPending } = useMutation({
     mutationFn: login,
   });
-
+  const { setUser } = useAuthStore();
   const {
     register,
     handleSubmit,
@@ -44,8 +45,9 @@ const LoginModal = ({
   const onSubmit = (data: LoginFormData) => {
     loginMutation(data, {
       onSuccess: (response: LoginResponse) => {
+        setUser(response.user);
         notifications.show({
-          title: "Login Successful",
+          title: response.message,
           message: `Welcome back!`,
           color: "green",
           position: "top-center",
@@ -53,7 +55,7 @@ const LoginModal = ({
         close();
 
         // Redirect based on role
-        if (response.role === "baker") {
+        if (response.user.role === "baker") {
           router.push("/dashboard");
         } else {
           router.push("/products");

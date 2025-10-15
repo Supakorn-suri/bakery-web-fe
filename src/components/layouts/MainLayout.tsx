@@ -26,10 +26,13 @@ import {
   Anchor,
   Transition,
   AppShellProps,
+  useMantineTheme,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 import classes from "./MainLayout.module.css";
 import { NavItem } from "../navbars/NavItem";
+import { useAuthStore } from "@/features/auth/store/authStore";
 
 interface MenuItem {
   icon: string;
@@ -60,10 +63,13 @@ export const MainLayout = ({
   rightButton = { label: "Home", path: "/home" },
   ...rest
 }: MainLayoutProps) => {
+  const { breakpoints } = useMantineTheme();
   const [opened, { toggle }] = useDisclosure();
   const pinned = useHeadroom({ fixedAt: 120 });
   const [scroll, scrollTo] = useWindowScroll();
   const router = useRouter();
+  const { user: currentUser, logout } = useAuthStore();
+  const isWidthXsUp = useMediaQuery(`(min-width: ${breakpoints.xs})`);
 
   const iconMap: Record<string, React.ElementType> = {
     user: IconUser,
@@ -72,6 +78,11 @@ export const MainLayout = ({
     chartPie: IconChartPie,
     listDetails: IconListDetails,
     progressCheck: IconProgressCheck,
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
   };
 
   return (
@@ -127,13 +138,19 @@ export const MainLayout = ({
               // member | baker menu
               <Menu trigger="click-hover" openDelay={100} closeDelay={400}>
                 <Menu.Target>
-                  <Button
-                    color="#4A2E1F"
-                    variant="light"
-                    leftSection={<IconUserFilled size={16} />}
-                  >
-                    name@mail.com
-                  </Button>
+                  {isWidthXsUp ? (
+                    <Button
+                      color="#4A2E1F"
+                      variant="light"
+                      leftSection={<IconUserFilled size={16} />}
+                    >
+                      {currentUser?.email ?? "-"}
+                    </Button>
+                  ) : (
+                    <ActionIcon color="#4A2E1F" variant="light">
+                      <IconUserFilled size={16} />
+                    </ActionIcon>
+                  )}
                 </Menu.Target>
                 <Menu.Dropdown>
                   {rightMenuItem &&
@@ -153,7 +170,7 @@ export const MainLayout = ({
                   <Menu.Item
                     color="red"
                     leftSection={<IconLogout size={14} />}
-                    onClick={() => router.replace("/home")}
+                    onClick={handleLogout}
                   >
                     Logout
                   </Menu.Item>
