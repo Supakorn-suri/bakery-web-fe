@@ -16,10 +16,12 @@ import { IconEdit, IconTrash, IconSearch, IconDots } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { modals } from "@mantine/modals";
 
-import OrderDetailModal, { Order } from "@/components/Modal/OrderDetailModal";
+import OrderDetailModal, {
+  Order,
+} from "@/features/orders/components/OrderDetailModal";
 import OrderStatusModal, {
   getStatusColor,
-} from "@/components/Modal/OrderStatusModal";
+} from "@/features/orders/components/OrderStatusModal";
 
 const mockOrders: Order[] = [
   {
