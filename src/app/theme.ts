@@ -68,7 +68,7 @@ const theme = createTheme({
     TextInput: {
       defaultProps: {
         radius: "8px",
-        inputWrapperOrder: ["label", "input", "description"],
+        inputWrapperOrder: ["label", "input", "description", "error"],
       },
       styles: {
         wrapper: {
@@ -79,13 +79,13 @@ const theme = createTheme({
     Textarea: {
       defaultProps: {
         radius: "8px",
-        inputWrapperOrder: ["label", "input", "description"],
+        inputWrapperOrder: ["label", "input", "description", "error"],
       },
     },
     PasswordInput: {
       defaultProps: {
         radius: "8px",
-        inputWrapperOrder: ["label", "input", "description"],
+        inputWrapperOrder: ["label", "input", "description", "error"],
       },
     },
     Table: {
