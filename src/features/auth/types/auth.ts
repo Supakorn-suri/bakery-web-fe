@@ -6,8 +6,8 @@ export interface LoginRequest {
 export interface User {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   role: string;
 }
 
@@ -20,10 +20,12 @@ export interface RegisterRequest {
   email: string;
   password: string;
   role: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
+  bakery_name?: string;
+  phone_number?: string;
 }
 
-export interface RegisterResponse {
+export interface MessageResponse {
   message: string;
 }

@@ -1,7 +1,10 @@
 import { apiClient } from "@/lib/axios";
-import { RegisterRequest, RegisterResponse } from "../types/auth";
+import { RegisterRequest, MessageResponse } from "../types/auth";
 
-export const register = async (data: RegisterRequest) => {
-  const response = await apiClient.post<RegisterResponse>("/auth/register", data);
+export const register = async (payload: RegisterRequest) => {
+  const response = await apiClient.post<MessageResponse>(
+    "/auth/register",
+    payload
+  );
   return response.data;
 };

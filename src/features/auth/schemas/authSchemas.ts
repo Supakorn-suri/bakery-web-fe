@@ -12,8 +12,8 @@ export type LoginFormData = z.infer<typeof loginSchema>;
 
 export const registerSchema = z
   .object({
-    firstName: z.string().min(1, "First name is required"),
-    lastName: z.string().min(1, "Last name is required"),
+    first_name: z.string().min(1, "First name is required"),
+    last_name: z.string().min(1, "Last name is required"),
     email: z
       .string()
       .min(1, "Email is required")
@@ -25,6 +25,8 @@ export const registerSchema = z
       .max(10, "Password must be less than 10 characters"),
     confirmPassword: z.string().min(1, "Please confirm your password"),
     role: z.enum(["member", "baker"] as const),
+    phone_number: z.string().min(1, "Phone number is required"),
+  bakery_name: z.string().min(1, "Bakery name is required"),
   })
   .refine(
     (data: { password: string; confirmPassword: string }) =>

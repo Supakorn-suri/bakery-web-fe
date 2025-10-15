@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {
   Flex,
   TextInput,
@@ -19,7 +18,7 @@ import { notifications } from "@mantine/notifications";
 
 import { register as registerApi } from "../apis/register";
 import { RegisterFormData, registerSchema } from "../schemas/authSchemas";
-import { RegisterResponse } from "../types/auth";
+import { MessageResponse } from '../types/auth';
 
 interface MemberRegisterFormProps {
   onLoginClick: () => void;
@@ -43,12 +42,11 @@ const MemberRegisterForm = ({ onLoginClick }: MemberRegisterFormProps) => {
 
   const onSubmit = (data: RegisterFormData) => {
     registerMutation(data, {
-      onSuccess: (response: RegisterResponse) => {
+      onSuccess: (response: MessageResponse) => {
         notifications.show({
-          title: response.message,
+          title: response.message || "Registered successfully!",
           message: `Welcome to our bakery!, Please login to continue`,
           color: "green",
-          position: "top-center",
         });
         // reset form
         reset();
@@ -60,7 +58,6 @@ const MemberRegisterForm = ({ onLoginClick }: MemberRegisterFormProps) => {
           title: "Register Failed",
           message: error.response?.data?.message || "Please try again",
           color: "red",
-          position: "top-center",
         });
       },
     });
@@ -75,14 +72,14 @@ const MemberRegisterForm = ({ onLoginClick }: MemberRegisterFormProps) => {
             <TextInput
               label="First Name"
               placeholder="Your first name"
-              {...register("firstName")}
-              error={errors.firstName?.message}
+              {...register("first_name")}
+              error={errors.first_name?.message}
             />
             <TextInput
               label="Last Name"
               placeholder="Your last name"
-              {...register("lastName")}
-              error={errors.lastName?.message}
+              {...register("last_name")}
+              error={errors.last_name?.message}
             />
           </SimpleGrid>
           <TextInput

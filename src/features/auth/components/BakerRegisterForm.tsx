@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import {
   Flex,
   Stepper,
@@ -35,14 +34,13 @@ import { notifications } from "@mantine/notifications";
 
 import { register as registerApi } from "../apis/register";
 import { RegisterFormData, registerSchema } from "../schemas/authSchemas";
-import { RegisterResponse } from "../types/auth";
+import { MessageResponse } from "../types/auth";
 
 interface BakerRegisterFormProps {
   onLoginClick: () => void;
 }
 
 const BakerRegisterForm = ({ onLoginClick }: BakerRegisterFormProps) => {
-  const router = useRouter();
   const [active, setActive] = useState(0);
 
   const nextStep = () =>
@@ -67,12 +65,11 @@ const BakerRegisterForm = ({ onLoginClick }: BakerRegisterFormProps) => {
 
   const onSubmit = (data: RegisterFormData) => {
     registerMutation(data, {
-      onSuccess: (response: RegisterResponse) => {
+      onSuccess: (response: MessageResponse) => {
         notifications.show({
-          title: response.message,
+          title: response.message || "Registered successfully!",
           message: `Welcome to our bakery!, Please login to continue`,
           color: "green",
-          position: "top-center",
         });
         // reset form
         reset();
@@ -84,7 +81,6 @@ const BakerRegisterForm = ({ onLoginClick }: BakerRegisterFormProps) => {
           title: "Register Failed",
           message: error.response?.data?.message || "Please try again",
           color: "red",
-          position: "top-center",
         });
       },
     });
@@ -107,14 +103,14 @@ const BakerRegisterForm = ({ onLoginClick }: BakerRegisterFormProps) => {
                 <TextInput
                   label="First Name"
                   placeholder="Your first name"
-                  {...register("firstName")}
-                  error={errors.firstName?.message}
+                  {...register("first_name")}
+                  error={errors.first_name?.message}
                 />
                 <TextInput
                   label="Last Name"
                   placeholder="Your last name"
-                  {...register("lastName")}
-                  error={errors.lastName?.message}
+                  {...register("last_name")}
+                  error={errors.last_name?.message}
                 />
               </SimpleGrid>
               <TextInput
@@ -143,8 +139,18 @@ const BakerRegisterForm = ({ onLoginClick }: BakerRegisterFormProps) => {
           <Stepper.Step icon={<IconBuildingStore size={18} />}>
             <Flex direction="column" gap={16} mt={16}>
               <Title order={4}>Step 2: Bakery information</Title>
-              <TextInput label="Bakery Name" placeholder="Your bakery name" />
-              <TextInput label="Phone Number" placeholder="Your phone number" />
+              <TextInput
+                label="Bakery Name"
+                placeholder="Your bakery name"
+                {...register("bakery_name")}
+                error={errors.bakery_name?.message}
+              />
+              <TextInput
+                label="Phone Number"
+                placeholder="Your phone number"
+                {...register("phone_number")}
+                error={errors.phone_number?.message}
+              />
               <Textarea label="Bakery Address" placeholder="Bakery address" />
             </Flex>
           </Stepper.Step>
