@@ -1,25 +1,24 @@
+import { ActionIcon, Flex, Box, Text } from "@mantine/core";
 import {
   IconBrandInstagram,
   IconBrandTwitter,
   IconBrandYoutube,
 } from "@tabler/icons-react";
-import { ActionIcon, Container, Group, Box, Text } from "@mantine/core";
 
-export function FooterSocial() {
+export const FooterSocial = () => {
   return (
-    <Box style={{ width: "100%", padding: "1rem 0" }}>
-      <Container
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "2rem",
-        }}
+    <Box bg="#77523F" p={{ base: 8, xs: 16 }} w="100%">
+      <Flex
+        direction="row"
+        gap={12}
+        justify={{ base: "center", xs: "space-between" }}
+        align="center"
+        w="100%"
       >
-        <Text fz="sm" c="white">
+        <Text fz="sm" c="white" display={{ base: "none", xs: "block" }}>
           © {new Date().getFullYear()} BakeStory. All rights reserved.
         </Text>
-        <Group gap={12}>
+        <Flex direction="row">
           <ActionIcon size="lg" color="white" variant="subtle">
             <IconBrandTwitter size={18} stroke={1.5} />
           </ActionIcon>
@@ -29,8 +28,8 @@ export function FooterSocial() {
           <ActionIcon size="lg" color="white" variant="subtle">
             <IconBrandInstagram size={18} stroke={1.5} />
           </ActionIcon>
-        </Group>
-      </Container>
+        </Flex>
+      </Flex>
     </Box>
   );
-}
+};
