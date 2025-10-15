@@ -16,13 +16,9 @@ import {
   Box,
 } from "@mantine/core";
 import { IconCircleCheck } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
-
-import LoginModal from "../../auth/components/LoginModal";
 
 const RoleSelectionCards = ({ id }: { id: string }) => {
   const router = useRouter();
-  const [openedLogin, loginHandlers] = useDisclosure(false);
 
   return (
     <Box
@@ -94,7 +90,7 @@ const RoleSelectionCards = ({ id }: { id: string }) => {
                   background:
                     "linear-gradient(135deg, #8A4621 0%, #BA653A 75%, #DC682E 100%)",
                 }}
-                onClick={loginHandlers.open}
+                onClick={() => router.replace("/register")}
               >
                 Apply Now
               </Button>
@@ -147,7 +143,6 @@ const RoleSelectionCards = ({ id }: { id: string }) => {
             </Flex>
           </Card>
         </SimpleGrid>
-        <LoginModal opened={openedLogin} close={loginHandlers.close} />
       </Flex>
     </Box>
   );

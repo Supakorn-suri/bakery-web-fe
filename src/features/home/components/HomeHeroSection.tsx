@@ -15,29 +15,23 @@ const HomeHeroSection = ({ id }: { id: string }) => {
       <Image
         top="-5%"
         right="30%"
-        pos="absolute"
         h={270}
-        w="auto"
-        fit="contain"
         src="/plate_1.png"
+        className={classes.bakery_img}
       />
       <Image
         top="30%"
         right="-5%"
-        pos="absolute"
         h={300}
-        w="auto"
-        fit="contain"
         src="/plate_2.png"
+        className={classes.bakery_img}
       />
       <Image
         top="50%"
         left="3%"
-        pos="absolute"
         h={450}
-        w="auto"
-        fit="contain"
         src="/plate_3.png"
+        className={classes.bakery_img}
       />
       <Text className={classes.handwriting_text}>
         <Text span style={{ display: "block" }} inherit>
