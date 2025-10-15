@@ -24,7 +24,7 @@ export const MantineProvider = ({ children }: MantineProviderProps) => (
   <>
     <ColorSchemeScript />
     <MantineThemeProvider theme={theme}>
-      <Notifications position="bottom-center" />
+      <Notifications position="top-center" />
       <ModalsProvider>{children}</ModalsProvider>
     </MantineThemeProvider>
   </>
