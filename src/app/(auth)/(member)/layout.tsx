@@ -4,9 +4,11 @@ import { MainLayout } from "@/components/layouts/MainLayout";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   const memberMenuItems = [
+    { icon: "bakery", label: "Pick Bakery", path: "/bakery" },
+    { icon: "cart", label: "Cart", path: "/cart" },
     { icon: "user", label: "Profile", path: "/account" },
-    { icon: "history", label: "Order history", path: "/account/orders" },
-    { icon: "heart", label: "My Favorites", path: "/account/favorites" },
+    // { icon: "history", label: "Order history", path: "/account/orders" },
+    // { icon: "heart", label: "My Favorites", path: "/account/favorites" },
   ];
 
   return (

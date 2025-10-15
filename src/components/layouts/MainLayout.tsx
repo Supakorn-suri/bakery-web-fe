@@ -14,6 +14,8 @@ import {
   IconChartPie,
   IconListDetails,
   IconProgressCheck,
+  IconBasket,
+  IconBaguette,
 } from "@tabler/icons-react";
 import {
   AppShell,
@@ -78,6 +80,8 @@ export const MainLayout = ({
     chartPie: IconChartPie,
     listDetails: IconListDetails,
     progressCheck: IconProgressCheck,
+    cart: IconBasket,
+    bakery: IconBaguette,
   };
 
   const handleLogout = () => {
