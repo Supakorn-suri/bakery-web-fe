@@ -9,9 +9,9 @@ import {
   Divider,
 } from "@mantine/core";
 
-import classes from "./About.module.css";
+import classes from "./FeatureSection.module.css";
 
-const About = ({ id }: { id: string }) => {
+const FeatureSection = ({ id }: { id: string }) => {
   return (
     <Box id={id} className={classes.bg_grid}>
       <Flex direction="row" align="center" justify="center">
@@ -114,4 +114,4 @@ const About = ({ id }: { id: string }) => {
   );
 };
 
-export default About;
+export default FeatureSection;
