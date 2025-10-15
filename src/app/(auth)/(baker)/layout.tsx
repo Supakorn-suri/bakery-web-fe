@@ -1,10 +1,17 @@
-import React from "react";
-import BakeryLayout from "@/components/Layout/BakeryLayout";
+import { ReactNode } from "react";
 
-export default function BakerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <BakeryLayout role="baker">{children}</BakeryLayout>;
+import { MainLayout } from "@/components/layouts/MainLayout";
+
+export default function BakerLayout({ children }: { children: ReactNode }) {
+  const bakerMenuItems = [
+    { icon: "chartPie", label: "Dashboard", path: "/dashboard" },
+    { icon: "listDetails", label: "Products Management", path: "/products" },
+    { icon: "progressCheck", label: "Orders Management", path: "/orders" },
+  ];
+
+  return (
+    <MainLayout rightNavMode="menu" rightMenuItem={bakerMenuItems}>
+      {children}
+    </MainLayout>
+  );
 }

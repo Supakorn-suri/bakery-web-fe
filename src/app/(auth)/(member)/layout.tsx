@@ -1,10 +1,17 @@
-import React from "react";
-import BakeryLayout from "@/components/Layout/BakeryLayout";
+import { ReactNode } from "react";
 
-export default function AuthLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <BakeryLayout role="member">{children}</BakeryLayout>;
+import { MainLayout } from "@/components/layouts/MainLayout";
+
+export default function AuthLayout({ children }: { children: ReactNode }) {
+  const memberMenuItems = [
+    { icon: "user", label: "Profile", path: "/account" },
+    { icon: "history", label: "Order history", path: "/account/orders" },
+    { icon: "heart", label: "My Favorites", path: "/account/favorites" },
+  ];
+
+  return (
+    <MainLayout rightNavMode="menu" rightMenuItem={memberMenuItems}>
+      {children}
+    </MainLayout>
+  );
 }

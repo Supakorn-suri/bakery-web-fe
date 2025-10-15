@@ -1,9 +1,13 @@
-import TabLayout from '@/components/Layout/TabLayout';
+import { ReactNode } from "react";
 
-export default function AccountLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return <TabLayout>{children}</TabLayout>;
+import TabLayout from "@/components/layouts/TabLayout";
+
+export default function AccountLayout({ children }: { children: ReactNode }) {
+  const tabs = [
+    { label: "Profile", path: "/account" },
+    { label: "Orders", path: "/account/orders" },
+    { label: "Favorites", path: "/account/favorites" },
+  ];
+
+  return <TabLayout tabs={tabs}>{children}</TabLayout>;
 }
