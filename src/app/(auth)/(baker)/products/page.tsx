@@ -17,10 +17,10 @@ import { IconEdit, IconTrash, IconPlus } from "@tabler/icons-react";
 import { modals } from "@mantine/modals";
 import { useDisclosure } from "@mantine/hooks";
 
-import { mockItems } from "@/components/Product/Recommend";
-import { ProductProps } from "@/components/Product/ProductCard";
-import UpdateProductModal from "@/components/Modal/UpdateProductModal";
-import CreateProductModal from "@/components/Modal/CreateProductModal";
+import { mockItems } from "@/components/sections/Recommend";
+import { ProductProps } from "@/features/products/components/ProductCard";
+import UpdateProductModal from "@/features/products/components/UpdateProductModal";
+import CreateProductModal from "@/features/products/components/CreateProductModal";
 
 const ProductPage = () => {
   const [
@@ -113,8 +113,14 @@ const ProductPage = () => {
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
       </Table>
-      <UpdateProductModal opened={openedUpdateModal} onClose={closeUpdateModal} />
-      <CreateProductModal opened={openedCreateModal} onClose={closeCreateModal} />
+      <UpdateProductModal
+        opened={openedUpdateModal}
+        onClose={closeUpdateModal}
+      />
+      <CreateProductModal
+        opened={openedCreateModal}
+        onClose={closeCreateModal}
+      />
     </Paper>
   );
 };

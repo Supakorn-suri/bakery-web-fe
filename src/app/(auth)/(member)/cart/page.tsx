@@ -21,8 +21,10 @@ import {
 } from "@mantine/core";
 import { IconMinus, IconPlus, IconTrash } from "@tabler/icons-react";
 
-import { mockItems } from "@/components/Product/Recommend";
-import ProductCard, { ProductProps } from "@/components/Product/ProductCard";
+import { mockItems } from "@/components/sections/Recommend";
+import ProductCard, {
+  ProductProps,
+} from "@/features/products/components/ProductCard";
 
 export type CartItem = ProductProps & {
   quantity: number;

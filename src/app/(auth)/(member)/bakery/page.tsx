@@ -4,11 +4,11 @@ import React from "react";
 import { Carousel } from "@mantine/carousel";
 import { Flex, Title, Container } from "@mantine/core";
 
-import { mockItems } from "@/components/Product/Recommend";
-import BakeryList from "@/components/Product/BakeryList";
-import ProductCard from "@/components/Product/ProductCard";
-import HeroSection from "@/components/Product/HeroSection";
-import SearchSpotlight from "@/components/Product/SearchSpotlight";
+import { mockItems } from "@/components/sections/Recommend";
+import BakeryList from "@/components/sections/BakeryList";
+import ProductCard from "@/features/products/components/ProductCard";
+import HeroSection from "@/components/sections/HeroSection";
+import SearchSpotlight from "@/components/Inputs/SearchSpotlight";
 
 const BakeryPage = () => {
   return (

@@ -13,8 +13,8 @@ import {
 } from "@mantine/core";
 import { IconHeartFilled } from "@tabler/icons-react";
 
-import { mockItems } from "@/components/Product/Recommend";
-import { ProductProps } from "@/components/Product/ProductCard";
+import { mockItems } from "@/components/sections/Recommend";
+import { ProductProps } from "@/features/products/components/ProductCard";
 
 const FavoritePage = () => {
   return (

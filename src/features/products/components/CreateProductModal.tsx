@@ -10,10 +10,11 @@ import {
   Flex,
   ModalProps,
 } from "@mantine/core";
-import {  FileWithPath } from "@mantine/dropzone";
-import { UploadFile } from "../Input/UploadFile";
+import { FileWithPath } from "@mantine/dropzone";
 
-const UpdateProductModal = ({ opened, onClose, ...rest }: ModalProps) => {
+import { UploadFile } from "../../../components/Inputs/UploadFile";
+
+const CreateProductModal = ({ opened, onClose, ...rest }: ModalProps) => {
   const [productName, setProductName] = useState<string>("");
   const [price, setPrice] = useState<number | string>("");
   const [cookTime, setCookTime] = useState<string>("");
@@ -25,21 +26,21 @@ const UpdateProductModal = ({ opened, onClose, ...rest }: ModalProps) => {
   };
 
   const handleSubmit = () => {
-    const updateProduct = {
+    const newProduct = {
       name: productName,
       price,
       cookTime,
       image: files[0],
     };
-    console.log("Updated product:", updateProduct);
-    onClose();
+    console.log("New product:", newProduct);
+    close();
   };
   return (
     <Modal
       size="lg"
       opened={opened}
       onClose={onClose}
-      title="Update Product"
+      title="Create Product"
       {...rest}
     >
       <Flex direction="column" gap={16}>
@@ -86,4 +87,4 @@ const UpdateProductModal = ({ opened, onClose, ...rest }: ModalProps) => {
   );
 };
 
-export default UpdateProductModal;
+export default CreateProductModal;

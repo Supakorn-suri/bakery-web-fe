@@ -20,7 +20,7 @@ import {
   IconChevronLeft,
 } from "@tabler/icons-react";
 
-const BakeryDetail = ({ bakeryId }: { bakeryId: string }) => {
+const ProductDetail = ({ bakeryId }: { bakeryId: string }) => {
   const router = useRouter();
   return (
     <Container mt={60}>
@@ -90,4 +90,4 @@ const BakeryDetail = ({ bakeryId }: { bakeryId: string }) => {
   );
 };
 
-export default BakeryDetail;
+export default ProductDetail;

@@ -1,4 +1,4 @@
-import BakeryDetail from "@/components/Detail/BakeryDetail";
+import ProductDetail from '@/features/products/components/ProductDetail';
 
 export default async function Page({
   params,
@@ -6,5 +6,5 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <BakeryDetail bakeryId={slug} />;
+  return <ProductDetail bakeryId={slug} />;
 }
