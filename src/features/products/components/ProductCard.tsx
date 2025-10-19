@@ -25,7 +25,7 @@ export interface ProductProps {
   name: string;
   baker: string;
   price: number;
-  cookTime: string;
+  cook_time: string;
   rating: number;
   image: string;
 }
@@ -66,7 +66,7 @@ const ProductCard = (item: ProductProps) => {
           <Group gap={4}>
             <IconClockHour3 color="#707070" size={16} />
             <Text size="sm" c="#707070">
-              {item.cookTime}
+              {item.cook_time}
             </Text>
             <Divider size="xs" orientation="vertical" my={2} mx={4} />
             <IconStarFilled color="#FFC862" size={16} />

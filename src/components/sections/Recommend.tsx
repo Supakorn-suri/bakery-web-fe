@@ -16,7 +16,7 @@ export const mockItems: ProductProps[] = [
     name: "Bread",
     baker: "Miyabi Bakery",
     price: 450,
-    cookTime: "20 min",
+    cook_time: "20 min",
     rating: 5,
     image:
       "https://plus.unsplash.com/premium_photo-1675788938970-e2716f23b1f9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmFrZXJ5fGVufDB8fDB8fHww",
@@ -26,7 +26,7 @@ export const mockItems: ProductProps[] = [
     name: "Cookie",
     baker: "Miyabi Bakery",
     price: 250,
-    cookTime: "20 min",
+    cook_time: "20 min",
     rating: 4.89,
     image:
       "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJha2VyeXxlbnwwfHwwfHx8MA%3D%3D",
@@ -36,7 +36,7 @@ export const mockItems: ProductProps[] = [
     name: "Tart",
     baker: "Yanagi Bakery",
     price: 150,
-    cookTime: "20 min",
+    cook_time: "20 min",
     rating: 4.86,
     image:
       "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGJha2VyeXxlbnwwfHwwfHx8MA%3D%3D",
@@ -46,7 +46,7 @@ export const mockItems: ProductProps[] = [
     name: "Bread",
     baker: "Alice Bakery",
     price: 250,
-    cookTime: "30 min",
+    cook_time: "30 min",
     rating: 4.8,
     image:
       "https://images.unsplash.com/photo-1666114265205-394e9d5848c6?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUwfHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
@@ -56,7 +56,7 @@ export const mockItems: ProductProps[] = [
     name: "Cake",
     baker: "Alice Bakery",
     price: 530,
-    cookTime: "45 min",
+    cook_time: "45 min",
     rating: 4.7,
     image:
       "https://images.unsplash.com/photo-1618426703433-cd39e563cf71?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY1fHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
@@ -66,7 +66,7 @@ export const mockItems: ProductProps[] = [
     name: "Cake",
     baker: "Yanagi Bakery",
     price: 350,
-    cookTime: "45 min",
+    cook_time: "45 min",
     rating: 4.5,
     image:
       "https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -76,7 +76,7 @@ export const mockItems: ProductProps[] = [
     name: "Croissant",
     baker: "Yanagi Bakery",
     price: 340,
-    cookTime: "30 min",
+    cook_time: "30 min",
     rating: 3.9,
     image:
       "https://images.unsplash.com/photo-1600516171254-e604c372872a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzI1fHxiYWtlcnl8ZW58MHx8MHx8fDA%3D",
@@ -125,7 +125,7 @@ const Recommend = () => {
                 <Group gap={4}>
                   <IconClockHour3 color="#707070" size={16} />
                   <Text size="sm" c="#707070">
-                    {item.cookTime}
+                    {item.cook_time}
                   </Text>
                   <Divider size="xs" orientation="vertical" my={2} mx={4} />
                   <IconStarFilled color="#FFC862" size={16} />

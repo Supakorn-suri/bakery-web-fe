@@ -48,7 +48,7 @@ const SearchSpotlight = () => {
             </Group>
             <Group>
               <IconClockHour3 />
-              <Text>{item.cookTime}</Text>
+              <Text>{item.cook_time}</Text>
               <Divider size="sm" orientation="vertical" />
               <Rating defaultValue={1} count={1} />
               <Text>{item.rating}</Text>
