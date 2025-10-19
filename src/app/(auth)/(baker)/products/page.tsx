@@ -24,6 +24,7 @@ import UpdateProductModal from "@/features/products/components/UpdateProductModa
 import CreateProductModal from "@/features/products/components/CreateProductModal";
 import { getProductsByBaker } from "@/features/products/apis/product";
 import { ProductResponse } from "@/features/products/types/product";
+import { DeleteProductModal } from "@/features/products/components/DeleteProductModal";
 
 const limit = 10;
 const getImageUrl = (imagePath: string): string => {
@@ -39,6 +40,9 @@ const getImageUrl = (imagePath: string): string => {
 const ProductPage = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(
+    null
+  );
 
   const [
     openedUpdateModal,
@@ -78,10 +82,12 @@ const ProductPage = () => {
   )} of ${totalProducts}`;
 
   const handleEditClick = (productId: number) => {
+    setSelectedProductId(productId);
     openUpdateModal();
   };
 
   const handleDeleteClick = (productId: number) => {
+    setSelectedProductId(productId);
     openDeleteModal();
   };
 
@@ -191,10 +197,16 @@ const ProductPage = () => {
       <UpdateProductModal
         opened={openedUpdateModal}
         onClose={closeUpdateModal}
+        productId={selectedProductId}
       />
       <CreateProductModal
         opened={openedCreateModal}
         onClose={closeCreateModal}
+      />
+      <DeleteProductModal
+        productId={selectedProductId}
+        opened={openedDeleteModal}
+        onClose={closeDeleteModal}
       />
     </Paper>
   );
