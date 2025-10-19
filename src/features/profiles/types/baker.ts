@@ -1,4 +1,4 @@
-import { Product } from "./member";
+import { ProductResponse } from '@/features/products/types/product';
 
 export interface BakerProfileResponse {
   profile: {
@@ -37,7 +37,7 @@ export interface OrderItem {
   product_id: number;
   quantity: number;
   price: number;
-  product?: Product;
+  product?: ProductResponse;
 }
 
 export interface UpdateBakerProfileRequest {
