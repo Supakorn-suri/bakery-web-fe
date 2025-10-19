@@ -1,14 +1,23 @@
 import { Product } from "./member";
 
 export interface BakerProfileResponse {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  bakery_name?: string;
-  phone_number?: string;
-  products?: Product[];
-  orders?: any;
+  profile: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone_number: string;
+    bakery_name: string;
+    created_at: string;
+    updated_at: string;
+  };
+  statistics: {
+    total_products: number;
+    total_orders: number;
+    total_revenue: number;
+    average_order_value: number;
+    pending_orders: number;
+  };
 }
 
 export interface Order {

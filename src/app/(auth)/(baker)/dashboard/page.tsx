@@ -4,8 +4,9 @@ import React, { useEffect } from "react";
 import {
   IconBasket,
   IconFileInvoice,
-  IconUser,
+  IconBaguette,
   IconCoin,
+  TablerIcon,
 } from "@tabler/icons-react";
 import {
   Container,
@@ -14,8 +15,6 @@ import {
   Card,
   Title,
   SimpleGrid,
-  Stack,
-  Skeleton,
   Grid,
 } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
@@ -29,6 +28,10 @@ import { OrderDonutChart } from "@/features/dashboard/components/OrderDonutChart
 import { BakerProfileResponse } from "@/features/profiles/types/baker";
 import { getBakerProfile } from "@/features/profiles/apis/bakerProfile";
 import { UpdateBakerModal } from "@/features/profiles/components/UpdateBakerModal";
+import {
+  OverviewSkeleton,
+  ProfileSkeleton,
+} from "@/features/profiles/components/ProfileSkeleton";
 
 const salesTrend = [
   { date: "Oct 1", Croissant: 120, Baguette: 90, Muffin: 60 },
@@ -51,36 +54,18 @@ const orderStatus = [
   { name: "Cancelled", value: 15, color: "#f03e3e" },
 ];
 
-const mockdata = [
-  {
-    title: "Total Orders",
-    value: "380 Orders",
-    icon: IconFileInvoice,
-  },
-  {
-    title: "Total Sales",
-    value: "฿45,250",
-    icon: IconCoin,
-  },
-  {
-    title: "Customers",
-    value: "520",
-    icon: IconUser,
-  },
-  {
-    title: "Top Product",
-    value: "Croissant",
-    icon: IconBasket,
-  },
-];
+type OverviewItem = {
+  title: string;
+  value: string;
+  icon: TablerIcon;
+};
 
 const DashboardPage = () => {
   const [openedEdit, { open: openEdit, close: closeEdit }] =
     useDisclosure(false);
 
-  // GET profile
   const {
-    data: profile,
+    data: profileData,
     isLoading,
     error,
   } = useQuery<BakerProfileResponse>({
@@ -100,13 +85,32 @@ const DashboardPage = () => {
     }
   }, [error]);
 
-  const features = mockdata.map((feature) => (
-    <Card key={feature.title} shadow="sm" radius="md" p={24} withBorder>
-      <feature.icon size={50} stroke={1.5} color="#8A4621" />
-      <Text c="dimmed">{feature.title}</Text>
-      <Text fw={600}>{feature.value}</Text>
-    </Card>
-  ));
+  const stats = profileData?.statistics;
+
+  const overviews: OverviewItem[] = [
+    {
+      title: "Total Orders",
+      value: `${stats?.total_orders ?? 0} Orders`,
+      icon: IconFileInvoice,
+    },
+    {
+      title: "Total Sales",
+      value: `฿${stats?.total_revenue ?? 0}`,
+      icon: IconCoin,
+    },
+    {
+      title: "Products",
+      value: `${stats?.total_products ?? 0}`,
+      icon: IconBaguette,
+    },
+    {
+      title: "Average Order Value",
+      value: `฿${stats?.average_order_value ?? 0}`,
+      icon: IconBasket,
+    },
+  ];
+
+  const profile = profileData?.profile;
 
   return (
     <Container mt={64} p={24}>
@@ -118,16 +122,7 @@ const DashboardPage = () => {
           </Title>
 
           {isLoading || !profile ? (
-            <Card shadow="sm" radius="md" p={24} w="100%" withBorder>
-              <Stack align="center" gap={16}>
-                <Skeleton height={100} circle my="auto" />
-                <Skeleton height={16} mt={6} radius="xl" />
-                <Skeleton height={16} mt={6} radius="xl" />
-                <Skeleton height={16} mt={6} radius="xl" />
-                <Skeleton height={16} mt={6} radius="xl" />
-                <Skeleton height={16} mt={6} radius="xl" />
-              </Stack>
-            </Card>
+            <ProfileSkeleton />
           ) : (
             <ProfileCard
               firstName={profile.first_name}
@@ -152,8 +147,20 @@ const DashboardPage = () => {
         {/* Overview & Charts */}
         <Title order={2}>Overview</Title>
         <SimpleGrid cols={{ base: 1, xs: 2, md: 4 }} spacing="xl">
-          {features}
+          {isLoading ? (
+            <OverviewSkeleton />
+          ) : (
+            overviews.map(({ title, value, icon: Icon }) => (
+              <Card key={title} shadow="sm" radius="md" p={24} withBorder>
+                <Icon size={50} stroke={1.5} color="#8A4621" />
+                <Text c="dimmed">{title}</Text>
+                <Text fw={600}>{value}</Text>
+              </Card>
+            ))
+          )}
         </SimpleGrid>
+
+        {/* Charts */}
         <SalesLineChart
           title="Sales Trend"
           data={salesTrend}

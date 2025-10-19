@@ -57,7 +57,7 @@ const theme = createTheme({
     NumberInput: {
       defaultProps: {
         radius: "8px",
-        inputWrapperOrder: ["label", "input", "description"],
+        inputWrapperOrder: ["label", "input", "description", "error"],
       },
       styles: {
         wrapper: {
