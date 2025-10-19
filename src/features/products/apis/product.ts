@@ -1,4 +1,5 @@
 import { apiClient } from "@/lib/axios";
+
 import {
   CreateProductRequest,
   UpdateProductRequest,
@@ -6,6 +7,7 @@ import {
   ProductResponse,
   SuccessResponse,
   PaginationParams,
+  SuccessProductResponse,
 } from "../types/product";
 
 export const getProducts = async (
@@ -35,7 +37,7 @@ export const getProductById = async (id: number): Promise<ProductResponse> => {
 
 export const createProduct = async (
   payload: CreateProductRequest
-): Promise<SuccessResponse<ProductResponse>> => {
+): Promise<SuccessProductResponse> => {
   const formData = new FormData();
   formData.append("name", payload.name);
   formData.append("price", String(payload.price));
@@ -48,12 +50,11 @@ export const createProduct = async (
     formData.append("image", payload.image);
   }
 
-  const res = await apiClient.post<SuccessResponse<ProductResponse>>(
+  const res = await apiClient.post<SuccessProductResponse>(
     "/baker/products",
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },
-      withCredentials: true,
     }
   );
   return res.data;
@@ -81,7 +82,7 @@ export const getProductsByBaker = async (
 export const updateProduct = async (
   id: number,
   payload: UpdateProductRequest
-): Promise<SuccessResponse<ProductResponse>> => {
+): Promise<SuccessProductResponse> => {
   const formData = new FormData();
 
   if (payload.name) {
@@ -97,7 +98,7 @@ export const updateProduct = async (
     formData.append("image", payload.image);
   }
 
-  const res = await apiClient.put<SuccessResponse<ProductResponse>>(
+  const res = await apiClient.put<SuccessProductResponse>(
     `/baker/products/${id}`,
     formData,
     {

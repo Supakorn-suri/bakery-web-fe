@@ -66,3 +66,5 @@ export interface ErrorResponse {
   message?: string;
   code: number;
 }
+
+export type SuccessProductResponse = SuccessResponse<ProductResponse>;
