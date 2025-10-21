@@ -31,7 +31,6 @@ const getImageUrl = (imagePath: string): string => {
   if (!imagePath) return "";
   if (imagePath.startsWith("/uploads")) {
     const imgUrl = `http://localhost:8080${imagePath}`;
-    console.log(imgUrl);
     return imgUrl;
   }
   return imagePath;

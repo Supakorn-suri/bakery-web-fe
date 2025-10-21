@@ -15,7 +15,6 @@ export const getImageUrl = (imagePath: string): string => {
   if (!imagePath) return "";
   if (imagePath.startsWith("/uploads")) {
     const imgUrl = `http://localhost:8080${imagePath}`;
-    console.log(imgUrl);
     return imgUrl;
   }
   return imagePath;
@@ -29,7 +28,6 @@ export const UploadFile: React.FC<UploadFileProps> = ({
   displayImage,
   ...rest
 }) => {
-  console.log("displayImage", displayImage);
   // Process displayImage URL or create object URL for files
   const imageUrl = useMemo(() => {
     if (displayImage) {
@@ -40,7 +38,7 @@ export const UploadFile: React.FC<UploadFileProps> = ({
     }
     return null;
   }, [displayImage, files]);
-  console.log("imageUrl", imageUrl);
+  // console.log("imageUrl", imageUrl);
   return (
     <Stack gap={6} w="100%">
       <Text size="sm">{label}</Text>
