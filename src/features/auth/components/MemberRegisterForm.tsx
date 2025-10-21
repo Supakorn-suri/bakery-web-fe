@@ -17,8 +17,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { notifications } from "@mantine/notifications";
 
 import { register as registerApi } from "../apis/register";
-import { RegisterFormData, registerSchema } from "../schemas/authSchemas";
-import { MessageResponse } from '../types/auth';
+import {
+  MemberRegisterFormData,
+  memberRegisterSchema,
+} from "../schemas/authSchemas";
+import { MessageResponse } from "../types/auth";
 
 interface MemberRegisterFormProps {
   onLoginClick: () => void;
@@ -33,14 +36,14 @@ const MemberRegisterForm = ({ onLoginClick }: MemberRegisterFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerSchema),
+  } = useForm<MemberRegisterFormData>({
+    resolver: zodResolver(memberRegisterSchema),
     defaultValues: {
       role: "member",
     },
   });
 
-  const onSubmit = (data: RegisterFormData) => {
+  const onSubmit = (data: MemberRegisterFormData) => {
     registerMutation(data, {
       onSuccess: (response: MessageResponse) => {
         notifications.show({
@@ -99,8 +102,8 @@ const MemberRegisterForm = ({ onLoginClick }: MemberRegisterFormProps) => {
           <PasswordInput
             label="Confirm password"
             placeholder="Confirm password"
-            {...register("confirmPassword")}
-            error={errors.confirmPassword?.message}
+            {...register("confirm_password")}
+            error={errors.confirm_password?.message}
           />
         </Flex>
 
