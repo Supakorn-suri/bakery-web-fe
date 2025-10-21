@@ -22,7 +22,8 @@ import {
 import { IconMinus, IconPlus, IconTrash } from "@tabler/icons-react";
 
 import { mockItems } from "@/components/sections/Recommend";
-import ProductCard, {
+import {
+  ProductCard,
   ProductProps,
 } from "@/features/products/components/ProductCard";
 

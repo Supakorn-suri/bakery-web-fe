@@ -1,10 +1,9 @@
 import React from "react";
-
-import { Flex, Image, Text, Divider } from "@mantine/core";
+import { Flex, Image, Text } from "@mantine/core";
 
 import classes from "./HeroSection.module.css";
 
-const HeroSection = () => {
+export const HeroSection = () => {
   return (
     <Flex
       direction="row"
@@ -51,5 +50,3 @@ const HeroSection = () => {
     </Flex>
   );
 };
-
-export default HeroSection;
