@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Spotlight, spotlight } from "@mantine/spotlight";
 import {
   Center,
@@ -12,25 +13,61 @@ import {
   Image,
   Rating,
   Divider,
+  Loader,
 } from "@mantine/core";
 import { IconSearch, IconClockHour3 } from "@tabler/icons-react";
+import { useDebouncedValue } from "@mantine/hooks";
+import { useRouter } from "next/navigation";
 
-import { mockItems } from "../sections/Recommend";
+import { getProducts } from "@/features/products/apis/product";
+import { ProductResponse } from "@/features/products/types/product";
 
-const SearchSpotlight = () => {
+import { getImageUrl } from "./UploadFile";
+
+interface SearchSpotlightProps {
+  onSearchChange?: (value: string) => void;
+}
+
+export const SearchSpotlight = ({ onSearchChange }: SearchSpotlightProps) => {
+  const router = useRouter();
   const [query, setQuery] = useState("");
+  const [debouncedQuery] = useDebouncedValue(query, 300);
 
-  const items = mockItems
-    .filter((item: any) =>
-      item.name.toLowerCase().includes(query.toLowerCase().trim())
-    )
-    .map((item: any) => (
-      <Spotlight.Action key={item.id} onClick={() => console.log(item)}>
+  // Fetch products based on search query
+  const { data: productRes, isLoading } = useQuery({
+    queryKey: ["products", "search", debouncedQuery],
+    queryFn: () =>
+      getProducts({
+        page: 1,
+        limit: 10,
+        search: debouncedQuery || undefined,
+      }),
+    enabled: debouncedQuery.length > 0,
+  });
+
+  useEffect(() => {
+    if (onSearchChange && debouncedQuery) {
+      onSearchChange(debouncedQuery);
+    }
+  }, [debouncedQuery, onSearchChange]);
+
+  const handleProductClick = (id: number) => {
+    router.push(`/bakery/${id}`);
+    spotlight.close();
+    setQuery("");
+  };
+
+  const items =
+    productRes?.data?.map((item: ProductResponse) => (
+      <Spotlight.Action
+        key={item.id}
+        onClick={() => handleProductClick(item.id)}
+      >
         <Group wrap="nowrap" w="100%">
           {item.image && (
             <Center>
               <Image
-                src={item.image}
+                src={getImageUrl(item.image)}
                 alt={item.name}
                 h={80}
                 w={80}
@@ -47,16 +84,16 @@ const SearchSpotlight = () => {
               <Text>฿{item.price}</Text>
             </Group>
             <Group>
-              <IconClockHour3 />
-              <Text>{item.cook_time}</Text>
+              <IconClockHour3 size={16} />
+              <Text size="sm">{item.cook_time || "N/A"}</Text>
               <Divider size="sm" orientation="vertical" />
-              <Rating defaultValue={1} count={1} />
-              <Text>{item.rating}</Text>
+              <Rating value={1} count={1} readOnly />
+              <Text size="sm">{item.rating?.toFixed(1) || "0.0"}</Text>
             </Group>
           </Box>
         </Group>
       </Spotlight.Action>
-    ));
+    )) || [];
 
   return (
     <>
@@ -80,15 +117,17 @@ const SearchSpotlight = () => {
           size="md"
           placeholder="Search your favorite bakery"
           rightSectionWidth={42}
+          readOnly
           style={{
             backdropFilter: "blur(2px)",
+            cursor: "pointer",
           }}
-          // styles={{
-          //   input: {
-          //     backgroundColor: "rgba(255, 255, 255, 0.8)",
-          //   },
-          // }}
-          // leftSection={<IconSearch size={18} stroke={1.5} />}
+          styles={{
+            input: {
+              cursor: "pointer",
+            },
+          }}
+          onClick={spotlight.open}
           rightSection={
             <ActionIcon
               size={32}
@@ -109,19 +148,27 @@ const SearchSpotlight = () => {
         maxHeight={350}
       >
         <Spotlight.Search
-          placeholder="Search..."
+          placeholder="Search products..."
           leftSection={<IconSearch stroke={1.5} />}
         />
         <Spotlight.ActionsList>
-          {items.length > 0 ? (
+          {isLoading ? (
+            <Center p="xl">
+              <Loader size="sm" />
+            </Center>
+          ) : items.length > 0 ? (
             items
+          ) : query.length > 0 ? (
+            <Spotlight.Empty>No products found...</Spotlight.Empty>
           ) : (
-            <Spotlight.Empty>Nothing found...</Spotlight.Empty>
+            <Center p="xl">
+              <Text c="dimmed" size="sm">
+                Start typing to search products
+              </Text>
+            </Center>
           )}
         </Spotlight.ActionsList>
       </Spotlight.Root>
     </>
   );
 };
-
-export default SearchSpotlight;
