@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useRouter } from "next/navigation";
 import {
   Button,
@@ -34,8 +35,27 @@ export interface ProductProps {
 
 export const ProductCard = (item: ProductProps) => {
   const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/bakery/${item.id}`);
+  };
+
+  const handleOrderClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click event
+    console.log(`Order clicked for product: ${item.name} (ID: ${item.id})`);
+  };
+
   return (
-    <Card id={item.id} w={200} h={300} p={0} radius={16} withBorder>
+    <Card
+      id={item.id}
+      w={200}
+      h={300}
+      p={0}
+      radius={16}
+      withBorder
+      style={{ cursor: "pointer" }}
+      onClick={handleCardClick}
+    >
       <Box pos="relative" w="100%">
         {item.image ? (
           <Image
@@ -94,12 +114,7 @@ export const ProductCard = (item: ProductProps) => {
           </Group>
         </Flex>
 
-        <Button
-          fullWidth
-          mt="md"
-          radius="md"
-          onClick={() => router.push(`/bakery/${item.id}`)}
-        >
+        <Button fullWidth mt="md" radius="md" onClick={handleOrderClick}>
           Order Now
         </Button>
       </Flex>

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useRouter } from "next/navigation";
 import {
   Flex,
@@ -20,8 +21,10 @@ import {
   IconStarFilled,
   IconPhoto,
 } from "@tabler/icons-react";
-import { ProductProps } from "./ProductCard";
+
 import { getImageUrl } from "@/components/Inputs/UploadFile";
+
+import { ProductProps } from "./ProductCard";
 
 export const HorizontalProductCard = ({
   id,
@@ -34,10 +37,29 @@ export const HorizontalProductCard = ({
 }: ProductProps) => {
   const router = useRouter();
 
+  const handleCardClick = () => {
+    router.push(`/bakery/${id}`);
+  };
+
+  const handleOrderClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click event
+    console.log(`Order clicked for product: ${name} (ID: ${id})`);
+  };
+
   return (
-    <Card id={id} miw={360} w="100%" h={160} withBorder p={0} radius={24}>
+    <Card
+      id={id}
+      miw={360}
+      w="100%"
+      h={160}
+      withBorder
+      p={0}
+      radius={24}
+      style={{ cursor: "pointer" }}
+      onClick={handleCardClick}
+    >
       <Flex direction="row" h="100%">
-        <Box pos="relative"  maw={160} w="100%"  >
+        <Box pos="relative" maw={160} w="100%">
           {image ? (
             <Image
               src={getImageUrl(image)}
@@ -101,10 +123,7 @@ export const HorizontalProductCard = ({
             <Text fw={600} c="primary">
               ฿ {price}
             </Text>
-            <ActionIcon
-              radius="xl"
-              onClick={() => router.push(`/bakery/${id}`)}
-            >
+            <ActionIcon radius="xl" onClick={handleOrderClick}>
               <IconPlus size={18} />
             </ActionIcon>
           </Group>
