@@ -3,8 +3,8 @@ import ProductDetail from '@/features/products/components/ProductDetail';
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ bakery_id: string }>;
 }) {
-  const { slug } = await params;
-  return <ProductDetail bakeryId={slug} />;
+  const { bakery_id } = await params;
+  return <ProductDetail bakeryId={bakery_id} />;
 }
